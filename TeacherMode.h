@@ -120,6 +120,7 @@ namespace CourseWork {
 			this->Name = L"TeacherMode";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Режим преподавателя";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &TeacherMode::TeacherMode_FormClosing);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -127,5 +128,6 @@ namespace CourseWork {
 #pragma endregion
 	private: System::Void ReturnToChoiceModeButton_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void CreatingNewCourseButton_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void TeacherMode_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
 };
 }

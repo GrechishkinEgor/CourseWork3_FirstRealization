@@ -17,3 +17,9 @@ System::Void CourseWork::ChoiceMode::ExitApplicationButton_Click(System::Object^
 	Application::Exit();
 	return System::Void();
 }
+
+System::Void CourseWork::ChoiceMode::ChoiceMode_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e)
+{
+	Application::Exit();
+	return System::Void();
+}

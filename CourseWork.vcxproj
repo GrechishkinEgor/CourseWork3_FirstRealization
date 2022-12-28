@@ -125,6 +125,7 @@
     <ClCompile Include="CreatingNewCourse.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="StudentMode.cpp" />
+    <ClCompile Include="TeacherCourseView.cpp" />
     <ClCompile Include="TeacherMode.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -137,6 +138,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="StudentMode.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="TeacherCourseView.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="TeacherMode.h">
@@ -152,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StudentMode.resx">
       <DependentUpon>StudentMode.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TeacherCourseView.resx">
+      <DependentUpon>TeacherCourseView.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TeacherMode.resx">
       <DependentUpon>TeacherMode.h</DependentUpon>

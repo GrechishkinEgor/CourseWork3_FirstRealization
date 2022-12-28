@@ -173,7 +173,9 @@ namespace CourseWork {
 			this->Controls->Add(this->GeneralGroupBox);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedToolWindow;
 			this->Name = L"CreatingNewCourse";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Создание нового курса";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &CreatingNewCourse::CreatingNewCourse_FormClosing);
 			this->GeneralGroupBox->ResumeLayout(false);
 			this->GeneralGroupBox->PerformLayout();
 			this->ResumeLayout(false);
@@ -182,5 +184,6 @@ namespace CourseWork {
 #pragma endregion
 	private: System::Void CancelButton_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void OKButton_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void CreatingNewCourse_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
 };
 }

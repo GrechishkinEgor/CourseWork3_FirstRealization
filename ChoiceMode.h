@@ -123,6 +123,7 @@ namespace CourseWork {
 			this->Name = L"ChoiceMode";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Выбор режима работы";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &ChoiceMode::ChoiceMode_FormClosed);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -131,5 +132,6 @@ namespace CourseWork {
 private: System::Void StudentModeButton_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void TeacherModeButton_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void ExitApplicationButton_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void ChoiceMode_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e);
 };
 }

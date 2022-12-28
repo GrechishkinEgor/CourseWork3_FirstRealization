@@ -5,3 +5,9 @@ System::Void CourseWork::StudentMode::ReturnToChoiceModeButton_Click(System::Obj
 	CurrentApplicationContext::ShowOnlyChoiceModeWin();
 	return System::Void();
 }
+
+System::Void CourseWork::StudentMode::StudentMode_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e)
+{
+	Application::Exit();
+	return System::Void();
+}
