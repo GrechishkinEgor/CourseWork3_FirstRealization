@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Test.h"
 
 namespace CourseWork
 {
@@ -11,6 +11,7 @@ namespace CourseWork
 		System::String^ TeacherName;
 		System::String^ TeacherPassword;
 		bool InDevelopmentFlag;
+		array<Test^>^ ListOfTests;
 	public:
 		Course();
 		Course(System::String^ CourseName, System::String^ TeacherName, System::String^ TeacherPassword);

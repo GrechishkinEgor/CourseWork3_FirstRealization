@@ -45,6 +45,9 @@
     <ClInclude Include="PasswordCheck.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="Test.h">
+      <Filter>Бэкэнд</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChoiceMode.cpp">
@@ -75,6 +78,9 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="PasswordCheck.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Test.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

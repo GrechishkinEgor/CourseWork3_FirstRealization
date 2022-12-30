@@ -129,6 +129,7 @@
     <ClCompile Include="StudentMode.cpp" />
     <ClCompile Include="TeacherCourseView.cpp" />
     <ClCompile Include="TeacherMode.cpp" />
+    <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppContext.h" />
@@ -154,6 +155,7 @@
     <ClInclude Include="TeacherMode.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Test.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ChoiceMode.resx">

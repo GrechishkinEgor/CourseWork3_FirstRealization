@@ -6,6 +6,7 @@ CourseWork::Course::Course()
     TeacherName = "";
     TeacherPassword = "";
     InDevelopmentFlag = true;
+    ListOfTests = gcnew array<Test^, 1>(0);
 }
 
 CourseWork::Course::Course(System::String^ CourseName, System::String^ TeacherName, System::String^ TeacherPassword) : Course()
@@ -60,6 +61,9 @@ void CourseWork::Course::WriteInFile(System::IO::BinaryWriter^ Writer)
     Writer->Write(TeacherName);
     Writer->Write(TeacherPassword);
     Writer->Write(InDevelopmentFlag);
+    Writer->Write(ListOfTests->Length);
+    for (Int32 i = 0; i < ListOfTests->Length; i++)
+        ListOfTests[i]->WriteInFile(Writer);
     return;
 }
 
@@ -69,5 +73,8 @@ void CourseWork::Course::ReadFromFile(System::IO::BinaryReader^ Reader)
    TeacherName = Reader->ReadString();
    TeacherPassword = Reader->ReadString();
    InDevelopmentFlag = Reader->ReadBoolean();
+   ListOfTests = gcnew array<Test^>(Reader->ReadInt32());
+   for (Int32 i = 0; i < ListOfTests->Length; i++)
+       ListOfTests[i] = gcnew Test(Reader);
    return;
 }
