@@ -76,10 +76,12 @@ namespace CourseWork {
 			// PasswordTextBox
 			// 
 			this->PasswordTextBox->Location = System::Drawing::Point(43, 63);
+			this->PasswordTextBox->MaxLength = 64;
 			this->PasswordTextBox->Name = L"PasswordTextBox";
 			this->PasswordTextBox->PasswordChar = '*';
 			this->PasswordTextBox->Size = System::Drawing::Size(229, 20);
 			this->PasswordTextBox->TabIndex = 1;
+			this->PasswordTextBox->PreviewKeyDown += gcnew System::Windows::Forms::PreviewKeyDownEventHandler(this, &PasswordCheck::PasswordTextBox_PreviewKeyDown);
 			// 
 			// OKButton
 			// 
@@ -101,6 +103,7 @@ namespace CourseWork {
 			this->Controls->Add(this->InfoLabel);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedToolWindow;
 			this->Name = L"PasswordCheck";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"¬вод парол€";
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -108,5 +111,6 @@ namespace CourseWork {
 		}
 #pragma endregion
 	private: System::Void OKButton_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void PasswordTextBox_PreviewKeyDown(System::Object^ sender, System::Windows::Forms::PreviewKeyDownEventArgs^ e);
 	};
 }

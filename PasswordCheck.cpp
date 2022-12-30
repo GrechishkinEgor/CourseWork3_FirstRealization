@@ -14,3 +14,10 @@ System::Void CourseWork::PasswordCheck::OKButton_Click(System::Object^ sender, S
     }  
     return System::Void();
 }
+
+System::Void CourseWork::PasswordCheck::PasswordTextBox_PreviewKeyDown(System::Object^ sender, System::Windows::Forms::PreviewKeyDownEventArgs^ e)
+{
+    if (e->KeyCode == Keys::Enter)
+        this->OKButton_Click(sender, e);
+    return System::Void();
+}
