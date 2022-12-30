@@ -7,6 +7,7 @@ CourseWork::Course::Course()
     TeacherPassword = "";
     InDevelopmentFlag = true;
     ListOfTests = gcnew array<Test^, 1>(0);
+    IdLastTest = 0;
 }
 
 CourseWork::Course::Course(System::String^ CourseName, System::String^ TeacherName, System::String^ TeacherPassword) : Course()
@@ -43,6 +44,11 @@ bool CourseWork::Course::CheckPassword(String^ UserPassword)
     return TeacherPassword == UserPassword->Trim(' '); //Усекаются пробелы в начале и конце
 }
 
+array<CourseWork::Test^>^ CourseWork::Course::GetListOfTests()
+{
+    return ListOfTests;
+}
+
 void CourseWork::Course::SetCourseName(String^ Name)
 {
     CourseName = Name;
@@ -55,6 +61,36 @@ void CourseWork::Course::SetTeacherName(String^ Name)
     return;
 }
 
+void CourseWork::Course::AddNewTest(Test^ NewTest)
+{
+    IdLastTest++;
+    NewTest->SetId(IdLastTest);
+    array<Test^>::Resize(ListOfTests, ListOfTests->Length + 1);
+    ListOfTests[ListOfTests->Length - 1] = NewTest;
+    return;
+}
+
+bool CourseWork::Course::RemoveTestWithId(int Id)
+{
+    for (int i = 0; i < ListOfTests->Length; i++)
+        if (ListOfTests[i]->GetId() == Id)
+        {
+            for (int j = i; j < ListOfTests->Length - 1; j++)
+                ListOfTests[j] = ListOfTests[j + 1];
+            array<Test^>::Resize(ListOfTests, ListOfTests->Length - 1);
+            return true;
+        }
+    return false;
+}
+
+CourseWork::Test^ CourseWork::Course::GetTestWithId(int Id)
+{
+    for (int i = 0; i < ListOfTests->Length; i++)
+        if (ListOfTests[i]->GetId() == Id)
+            return ListOfTests[i];
+    return nullptr;
+}
+
 void CourseWork::Course::WriteInFile(System::IO::BinaryWriter^ Writer)
 {
     Writer->Write(CourseName);
@@ -64,6 +100,7 @@ void CourseWork::Course::WriteInFile(System::IO::BinaryWriter^ Writer)
     Writer->Write(ListOfTests->Length);
     for (Int32 i = 0; i < ListOfTests->Length; i++)
         ListOfTests[i]->WriteInFile(Writer);
+    Writer->Write(IdLastTest);
     return;
 }
 
@@ -76,5 +113,6 @@ void CourseWork::Course::ReadFromFile(System::IO::BinaryReader^ Reader)
    ListOfTests = gcnew array<Test^>(Reader->ReadInt32());
    for (Int32 i = 0; i < ListOfTests->Length; i++)
        ListOfTests[i] = gcnew Test(Reader);
+   IdLastTest = Reader->ReadInt32();
    return;
 }

@@ -12,6 +12,7 @@ namespace CourseWork
 		System::String^ TeacherPassword;
 		bool InDevelopmentFlag;
 		array<Test^>^ ListOfTests;
+		int IdLastTest;
 	public:
 		Course();
 		Course(System::String^ CourseName, System::String^ TeacherName, System::String^ TeacherPassword);
@@ -21,10 +22,15 @@ namespace CourseWork
 		String^ GetTeacherName();
 		bool IsInDevelopment();
 		bool CheckPassword(String^ UserPassword);
+		array<Test^>^ GetListOfTests();		//Необходимо протестировать
 
 		void SetCourseName(String^ Name);
 		void SetTeacherName(String^ Name);
 
+		void AddNewTest(Test^ NewTest);		//Необходимо протестировать
+		bool RemoveTestWithId(int Id);		//Необходимо протестировать
+		Test^ GetTestWithId(int Id);		//Необходимо протестировать
+		
 		void WriteInFile(System::IO::BinaryWriter^ Writer);
 		void ReadFromFile(System::IO::BinaryReader^ Reader);
 	};

@@ -33,7 +33,6 @@ namespace CourseWork
 		static ChoiceMode^ ChoiceModeWin;
 		static TeacherMode^ TeacherModeWin;
 		static StudentMode^ StudentModeWin;
-		//static CreatingNewCourse^ CreatingNewCourseWin;
 		static TeacherCourseView^ TeacherCourseViewWin;
 
 		/*Открытый в приложении курс*/

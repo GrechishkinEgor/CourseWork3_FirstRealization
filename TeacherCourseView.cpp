@@ -1,5 +1,15 @@
 #include "AppContext.h"
 
+CourseWork::TeacherCourseView::TeacherCourseView(void)
+{
+    InitializeComponent();
+    Course^ CurrentCourse = CurrentApplicationContext::GetCourse();
+    array<Test^>^ TestList = CurrentCourse->GetListOfTests();
+    for (int i = 0; i < TestList->Length; i++)
+        this->TestsDataGridView->Rows->Add(TestList[i]->GetId(), TestList[i]->GetTestName());
+    return;
+}
+
 System::Void CourseWork::TeacherCourseView::íàñòðîéêèÊóðñàToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
     CourseSettings^ CourseSettingsWin = gcnew CourseSettings;
@@ -29,4 +39,16 @@ System::Void CourseWork::TeacherCourseView::ñîõðàíèòüÊàêToolStripMenuItem_Click(
 {
     if (SaveCourseDialog->ShowDialog() == System::Windows::Forms::DialogResult::OK)
         CurrentApplicationContext::SaveCourse(SaveCourseDialog->FileName);
+}
+
+System::Void CourseWork::TeacherCourseView::íîâûéÒåñòToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+{
+    CreatingNewTest^ CreatingNewTestWin = gcnew CreatingNewTest;
+    if (CreatingNewTestWin->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+    {
+        Course^ CurrentCourse = CurrentApplicationContext::GetCourse();
+        array<Test^>^ TestList = CurrentCourse->GetListOfTests();
+        this->TestsDataGridView->Rows->Add(TestList[TestList->Length - 1]->GetId(), TestList[TestList->Length - 1]->GetTestName());
+    }
+    return System::Void();
 }

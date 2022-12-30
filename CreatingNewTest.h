@@ -1,7 +1,8 @@
 #pragma once
-/*Данная форма создает новый тест в текущем курсе
-* Вызывается как модальное окно из формы TeacherCourseView
-* При каждом показе создается новый экземпляр
+/*Данная форма создает новый тест в текущем курсе.
+* Вызывается как модальное окно из формы TeacherCourseView.
+* При каждом показе создается новый экземпляр.
+* При успешном добавлении теста в курс в свойстве DialogResult выставляет ОК и форма закрывается.
 */
 namespace CourseWork {
 
@@ -57,8 +58,8 @@ namespace CourseWork {
 		void InitializeComponent(void)
 		{
 			this->GeneralGroupBox = (gcnew System::Windows::Forms::GroupBox());
-			this->TestNameLabel = (gcnew System::Windows::Forms::Label());
 			this->TestNameTextBox = (gcnew System::Windows::Forms::TextBox());
+			this->TestNameLabel = (gcnew System::Windows::Forms::Label());
 			this->OKButton = (gcnew System::Windows::Forms::Button());
 			this->GeneralGroupBox->SuspendLayout();
 			this->SuspendLayout();
@@ -74,6 +75,14 @@ namespace CourseWork {
 			this->GeneralGroupBox->TabStop = false;
 			this->GeneralGroupBox->Text = L"Основное";
 			// 
+			// TestNameTextBox
+			// 
+			this->TestNameTextBox->Location = System::Drawing::Point(103, 25);
+			this->TestNameTextBox->MaxLength = 256;
+			this->TestNameTextBox->Name = L"TestNameTextBox";
+			this->TestNameTextBox->Size = System::Drawing::Size(223, 20);
+			this->TestNameTextBox->TabIndex = 1;
+			// 
 			// TestNameLabel
 			// 
 			this->TestNameLabel->AutoSize = true;
@@ -83,13 +92,6 @@ namespace CourseWork {
 			this->TestNameLabel->TabIndex = 0;
 			this->TestNameLabel->Text = L"Название теста:";
 			// 
-			// TestNameTextBox
-			// 
-			this->TestNameTextBox->Location = System::Drawing::Point(103, 25);
-			this->TestNameTextBox->Name = L"TestNameTextBox";
-			this->TestNameTextBox->Size = System::Drawing::Size(223, 20);
-			this->TestNameTextBox->TabIndex = 1;
-			// 
 			// OKButton
 			// 
 			this->OKButton->Location = System::Drawing::Point(142, 206);
@@ -98,6 +100,7 @@ namespace CourseWork {
 			this->OKButton->TabIndex = 1;
 			this->OKButton->Text = L"ОК";
 			this->OKButton->UseVisualStyleBackColor = true;
+			this->OKButton->Click += gcnew System::EventHandler(this, &CreatingNewTest::OKButton_Click);
 			// 
 			// CreatingNewTest
 			// 
@@ -116,5 +119,6 @@ namespace CourseWork {
 
 		}
 #pragma endregion
-	};
+	private: System::Void OKButton_Click(System::Object^ sender, System::EventArgs^ e);
+};
 }

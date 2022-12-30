@@ -19,13 +19,7 @@ namespace CourseWork {
 	public ref class TeacherCourseView : public System::Windows::Forms::Form
 	{
 	public:
-		TeacherCourseView(void)
-		{
-			InitializeComponent();
-			//
-			//TODO: äîáàâüòå êîä êîíñòğóêòîğà
-			//
-		}
+		TeacherCourseView(void);
 
 	protected:
 		/// <summary>
@@ -46,7 +40,9 @@ namespace CourseWork {
 	private: System::Windows::Forms::ToolStripMenuItem^ íàñòğîéêèÊóğñàToolStripMenuItem;
 	private: System::Windows::Forms::SaveFileDialog^ SaveCourseDialog;
 	private: System::Windows::Forms::DataGridView^ TestsDataGridView;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ID;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ TestName;
+
 
 
 
@@ -71,6 +67,7 @@ namespace CourseWork {
 			this->íàñòğîéêèÊóğñàToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->SaveCourseDialog = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->TestsDataGridView = (gcnew System::Windows::Forms::DataGridView());
+			this->ID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->TestName = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->GeneralMenuStrip->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->TestsDataGridView))->BeginInit();
@@ -107,6 +104,7 @@ namespace CourseWork {
 			this->íîâûéÒåñòToolStripMenuItem->Name = L"íîâûéÒåñòToolStripMenuItem";
 			this->íîâûéÒåñòToolStripMenuItem->Size = System::Drawing::Size(82, 20);
 			this->íîâûéÒåñòToolStripMenuItem->Text = L"Íîâûé òåñò";
+			this->íîâûéÒåñòToolStripMenuItem->Click += gcnew System::EventHandler(this, &TeacherCourseView::íîâûéÒåñòToolStripMenuItem_Click);
 			// 
 			// íàñòğîéêèÊóğñàToolStripMenuItem
 			// 
@@ -125,13 +123,22 @@ namespace CourseWork {
 			this->TestsDataGridView->AllowUserToAddRows = false;
 			this->TestsDataGridView->BackgroundColor = System::Drawing::SystemColors::Control;
 			this->TestsDataGridView->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->TestsDataGridView->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->TestName });
+			this->TestsDataGridView->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(2) {
+				this->ID,
+					this->TestName
+			});
 			this->TestsDataGridView->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->TestsDataGridView->GridColor = System::Drawing::SystemColors::ActiveBorder;
 			this->TestsDataGridView->Location = System::Drawing::Point(0, 24);
 			this->TestsDataGridView->Name = L"TestsDataGridView";
 			this->TestsDataGridView->Size = System::Drawing::Size(688, 340);
 			this->TestsDataGridView->TabIndex = 1;
+			// 
+			// ID
+			// 
+			this->ID->HeaderText = L"ID";
+			this->ID->Name = L"ID";
+			this->ID->ReadOnly = true;
 			// 
 			// TestName
 			// 
@@ -163,5 +170,6 @@ namespace CourseWork {
 private: System::Void TeacherCourseView_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
 private: System::Void ñîõğàíèòüToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void ñîõğàíèòüÊàêToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void íîâûéÒåñòToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }
