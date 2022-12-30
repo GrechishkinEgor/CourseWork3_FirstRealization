@@ -3,6 +3,8 @@
 #include "TeacherMode.h"
 #include "StudentMode.h"
 #include "CreatingNewCourse.h"
+#include "TeacherCourseView.h"
+#include "CourseSettings.h"
 #include "Course.h"
 
 namespace CourseWork
@@ -16,9 +18,11 @@ namespace CourseWork
 		static TeacherMode^ TeacherModeWin;
 		static StudentMode^ StudentModeWin;
 		static CreatingNewCourse^ CreatingNewCourseWin;
+		static TeacherCourseView^ TeacherCourseViewWin;
 
 		/*Открытый в приложении курс*/
 		static Course^ CurrentCourse;
+		static String^ Path;			//Файл с курсом
 	public:
 		/* Только конструктор по умолчанию. Необходим для передачи объекта методу Application::Run
 		 * Перед использованием статических методов обязательно вызвать конструктор.
@@ -35,6 +39,7 @@ namespace CourseWork
 		static void ShowOnlyTeacherModeWin();
 		static void ShowOnlyStudentModeWin();
 		static void ShowOnlyCreatingNewCourseWin();
+		static void ShowOnlyTeacherCourseViewWin();
 
 		/* 
 		*  Следующая группа методов отвечает за работу с курсом.
@@ -45,6 +50,10 @@ namespace CourseWork
 		static void SaveCourse(System::String^ Path);
 		//Установить данные о новом курсе
 		static void SetNewCourse(Course^ NewCourse);
+		//Получить данные о текущем курсе
+		static Course^ GetCourse();
+		//Получить путь файла с курсом ("", если файла нет)
+		static String^ GetPath();
 	};
 
 	

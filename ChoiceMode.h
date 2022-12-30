@@ -69,7 +69,7 @@ namespace CourseWork {
 			this->TeacherModeButton->Location = System::Drawing::Point(46, 147);
 			this->TeacherModeButton->Name = L"TeacherModeButton";
 			this->TeacherModeButton->Size = System::Drawing::Size(195, 38);
-			this->TeacherModeButton->TabIndex = 0;
+			this->TeacherModeButton->TabIndex = 1;
 			this->TeacherModeButton->Text = L"Режим преподавателя";
 			this->TeacherModeButton->UseVisualStyleBackColor = true;
 			this->TeacherModeButton->Click += gcnew System::EventHandler(this, &ChoiceMode::TeacherModeButton_Click);
@@ -81,7 +81,7 @@ namespace CourseWork {
 			this->StudentModeButton->Location = System::Drawing::Point(46, 103);
 			this->StudentModeButton->Name = L"StudentModeButton";
 			this->StudentModeButton->Size = System::Drawing::Size(195, 38);
-			this->StudentModeButton->TabIndex = 1;
+			this->StudentModeButton->TabIndex = 0;
 			this->StudentModeButton->Text = L"Режим учащегося";
 			this->StudentModeButton->UseVisualStyleBackColor = true;
 			this->StudentModeButton->Click += gcnew System::EventHandler(this, &ChoiceMode::StudentModeButton_Click);

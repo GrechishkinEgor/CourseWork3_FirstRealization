@@ -53,26 +53,47 @@ void CourseWork::CurrentApplicationContext::ShowOnlyCreatingNewCourseWin()
     return;
 }
 
+void CourseWork::CurrentApplicationContext::ShowOnlyTeacherCourseViewWin()
+{
+    HideAllForms();
+    TeacherCourseViewWin = gcnew TeacherCourseView;
+    TeacherCourseViewWin->Show();
+    return;
+}
+
 void CourseWork::CurrentApplicationContext::OpenCourse(System::String^ Path)
 {
     System::IO::FileStream^ Stream = gcnew System::IO::FileStream(Path, System::IO::FileMode::Open);
     System::IO::BinaryReader^ Reader = gcnew System::IO::BinaryReader(Stream);
     CurrentCourse = gcnew Course(Reader);
     Reader->Close();
+    CurrentApplicationContext::Path = Path;
     return;
 }
 
 void CourseWork::CurrentApplicationContext::SaveCourse(System::String^ Path)
 {
-    System::IO::FileStream^ Stream = gcnew System::IO::FileStream(Path, System::IO::FileMode::Open);
+    System::IO::FileStream^ Stream = gcnew System::IO::FileStream(Path, System::IO::FileMode::Create);
     System::IO::BinaryWriter^ Writer = gcnew System::IO::BinaryWriter(Stream);
     CurrentCourse->WriteInFile(Writer);
     Writer->Close();
+    CurrentApplicationContext::Path = Path;
     return;
 }
 
 void CourseWork::CurrentApplicationContext::SetNewCourse(Course^ NewCourse)
 {
     CurrentCourse = NewCourse;
+    Path = "";
     return;
+}
+
+CourseWork::Course^ CourseWork::CurrentApplicationContext::GetCourse()
+{
+    return CurrentCourse;
+}
+
+System::String^ CourseWork::CurrentApplicationContext::GetPath()
+{
+    return Path;
 }

@@ -10,8 +10,7 @@ System::Void CourseWork::CreatingNewCourse::OKButton_Click(System::Object^ sende
 {
     Course^ NewCourse = gcnew Course(CourseNameTextBox->Text, TeacherNameTextBox->Text, TeacherPasswordTextBox->Text);
     CurrentApplicationContext::SetNewCourse(NewCourse);
-    // —юда дописать показ окна разработки курса вместо возврата к первоначальному окну
-    CurrentApplicationContext::ShowOnlyTeacherModeWin();
+    CurrentApplicationContext::ShowOnlyTeacherCourseViewWin();
     return System::Void();
 }
 

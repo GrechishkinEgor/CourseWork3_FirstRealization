@@ -38,6 +38,7 @@ namespace CourseWork {
 	private: System::Windows::Forms::Button^ OpenCourseButton;
 	private: System::Windows::Forms::Button^ ReturnToChoiceModeButton;
 	private: System::Windows::Forms::Label^ InfoLabel;
+	private: System::Windows::Forms::OpenFileDialog^ OpenCourseDialog;
 	protected:
 
 	protected:
@@ -59,6 +60,7 @@ namespace CourseWork {
 			this->OpenCourseButton = (gcnew System::Windows::Forms::Button());
 			this->ReturnToChoiceModeButton = (gcnew System::Windows::Forms::Button());
 			this->InfoLabel = (gcnew System::Windows::Forms::Label());
+			this->OpenCourseDialog = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->SuspendLayout();
 			// 
 			// CreatingNewCourseButton
@@ -83,6 +85,7 @@ namespace CourseWork {
 			this->OpenCourseButton->TabIndex = 1;
 			this->OpenCourseButton->Text = L"Открыть существующий курс";
 			this->OpenCourseButton->UseVisualStyleBackColor = true;
+			this->OpenCourseButton->Click += gcnew System::EventHandler(this, &TeacherMode::OpenCourseButton_Click);
 			// 
 			// ReturnToChoiceModeButton
 			// 
@@ -107,6 +110,10 @@ namespace CourseWork {
 			this->InfoLabel->TabIndex = 3;
 			this->InfoLabel->Text = L"Режим работы: преподаватель";
 			// 
+			// OpenCourseDialog
+			// 
+			this->OpenCourseDialog->Filter = L"Курсы|*.course";
+			// 
 			// TeacherMode
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -129,5 +136,6 @@ namespace CourseWork {
 	private: System::Void ReturnToChoiceModeButton_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void CreatingNewCourseButton_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void TeacherMode_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
+private: System::Void OpenCourseButton_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

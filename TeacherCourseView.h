@@ -40,9 +40,10 @@ namespace CourseWork {
 	private: System::Windows::Forms::ToolStripMenuItem^ ñîõğàíèòüÊàêToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ íîâûéÒåñòToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ íàñòğîéêèÊóğñàToolStripMenuItem;
-	private: System::Windows::Forms::Panel^ GeneralInfoPanel;
-	private: System::Windows::Forms::TextBox^ CourseNameTextBox;
-	private: System::Windows::Forms::Label^ CourseNameLabel;
+	private: System::Windows::Forms::SaveFileDialog^ SaveCourseDialog;
+
+
+
 
 	private:
 		/// <summary>
@@ -62,11 +63,8 @@ namespace CourseWork {
 			this->ñîõğàíèòüÊàêToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->íîâûéÒåñòToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->íàñòğîéêèÊóğñàToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->GeneralInfoPanel = (gcnew System::Windows::Forms::Panel());
-			this->CourseNameLabel = (gcnew System::Windows::Forms::Label());
-			this->CourseNameTextBox = (gcnew System::Windows::Forms::TextBox());
+			this->SaveCourseDialog = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->GeneralMenuStrip->SuspendLayout();
-			this->GeneralInfoPanel->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// GeneralMenuStrip
@@ -77,7 +75,7 @@ namespace CourseWork {
 			});
 			this->GeneralMenuStrip->Location = System::Drawing::Point(0, 0);
 			this->GeneralMenuStrip->Name = L"GeneralMenuStrip";
-			this->GeneralMenuStrip->Size = System::Drawing::Size(647, 24);
+			this->GeneralMenuStrip->Size = System::Drawing::Size(688, 24);
 			this->GeneralMenuStrip->TabIndex = 0;
 			this->GeneralMenuStrip->Text = L"menuStrip1";
 			// 
@@ -86,12 +84,14 @@ namespace CourseWork {
 			this->ñîõğàíèòüToolStripMenuItem->Name = L"ñîõğàíèòüToolStripMenuItem";
 			this->ñîõğàíèòüToolStripMenuItem->Size = System::Drawing::Size(78, 20);
 			this->ñîõğàíèòüToolStripMenuItem->Text = L"Ñîõğàíèòü";
+			this->ñîõğàíèòüToolStripMenuItem->Click += gcnew System::EventHandler(this, &TeacherCourseView::ñîõğàíèòüToolStripMenuItem_Click);
 			// 
 			// ñîõğàíèòüÊàêToolStripMenuItem
 			// 
 			this->ñîõğàíèòüÊàêToolStripMenuItem->Name = L"ñîõğàíèòüÊàêToolStripMenuItem";
 			this->ñîõğàíèòüÊàêToolStripMenuItem->Size = System::Drawing::Size(108, 20);
 			this->ñîõğàíèòüÊàêToolStripMenuItem->Text = L"Ñîõğàíèòü êàê...";
+			this->ñîõğàíèòüÊàêToolStripMenuItem->Click += gcnew System::EventHandler(this, &TeacherCourseView::ñîõğàíèòüÊàêToolStripMenuItem_Click);
 			// 
 			// íîâûéÒåñòToolStripMenuItem
 			// 
@@ -104,55 +104,34 @@ namespace CourseWork {
 			this->íàñòğîéêèÊóğñàToolStripMenuItem->Name = L"íàñòğîéêèÊóğñàToolStripMenuItem";
 			this->íàñòğîéêèÊóğñàToolStripMenuItem->Size = System::Drawing::Size(113, 20);
 			this->íàñòğîéêèÊóğñàToolStripMenuItem->Text = L"Íàñòğîéêè êóğñà";
+			this->íàñòğîéêèÊóğñàToolStripMenuItem->Click += gcnew System::EventHandler(this, &TeacherCourseView::íàñòğîéêèÊóğñàToolStripMenuItem_Click);
 			// 
-			// GeneralInfoPanel
+			// SaveCourseDialog
 			// 
-			this->GeneralInfoPanel->BackColor = System::Drawing::SystemColors::Info;
-			this->GeneralInfoPanel->Controls->Add(this->CourseNameTextBox);
-			this->GeneralInfoPanel->Controls->Add(this->CourseNameLabel);
-			this->GeneralInfoPanel->Dock = System::Windows::Forms::DockStyle::Top;
-			this->GeneralInfoPanel->Location = System::Drawing::Point(0, 24);
-			this->GeneralInfoPanel->Name = L"GeneralInfoPanel";
-			this->GeneralInfoPanel->Size = System::Drawing::Size(647, 44);
-			this->GeneralInfoPanel->TabIndex = 1;
-			// 
-			// CourseNameLabel
-			// 
-			this->CourseNameLabel->AutoSize = true;
-			this->CourseNameLabel->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->CourseNameLabel->Location = System::Drawing::Point(3, 9);
-			this->CourseNameLabel->Name = L"CourseNameLabel";
-			this->CourseNameLabel->Size = System::Drawing::Size(114, 20);
-			this->CourseNameLabel->TabIndex = 0;
-			this->CourseNameLabel->Text = L"Íàçâàíèå êóğñà: ";
-			// 
-			// CourseNameTextBox
-			// 
-			this->CourseNameTextBox->Enabled = false;
-			this->CourseNameTextBox->Location = System::Drawing::Point(123, 9);
-			this->CourseNameTextBox->Name = L"CourseNameTextBox";
-			this->CourseNameTextBox->Size = System::Drawing::Size(512, 20);
-			this->CourseNameTextBox->TabIndex = 1;
+			this->SaveCourseDialog->DefaultExt = L"course;";
+			this->SaveCourseDialog->Filter = L"Êóğñû|*.course";
 			// 
 			// TeacherCourseView
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(647, 340);
-			this->Controls->Add(this->GeneralInfoPanel);
+			this->ClientSize = System::Drawing::Size(688, 364);
 			this->Controls->Add(this->GeneralMenuStrip);
 			this->MainMenuStrip = this->GeneralMenuStrip;
 			this->Name = L"TeacherCourseView";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Ğåæèì ïğåïîäàâàòåëÿ";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &TeacherCourseView::TeacherCourseView_FormClosing);
 			this->GeneralMenuStrip->ResumeLayout(false);
 			this->GeneralMenuStrip->PerformLayout();
-			this->GeneralInfoPanel->ResumeLayout(false);
-			this->GeneralInfoPanel->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	};
+	private: System::Void íàñòğîéêèÊóğñàToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void TeacherCourseView_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
+private: System::Void ñîõğàíèòüToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void ñîõğàíèòüÊàêToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
+};
 }

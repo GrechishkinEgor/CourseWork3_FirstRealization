@@ -17,3 +17,13 @@ System::Void CourseWork::TeacherMode::TeacherMode_FormClosing(System::Object^ se
 	Application::Exit();
 	return System::Void();
 }
+
+System::Void CourseWork::TeacherMode::OpenCourseButton_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	if (OpenCourseDialog->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+	{
+		CurrentApplicationContext::OpenCourse(OpenCourseDialog->FileName);
+		CurrentApplicationContext::ShowOnlyTeacherCourseViewWin();
+	}
+	return System::Void();
+}
