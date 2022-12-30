@@ -125,6 +125,7 @@
     <ClCompile Include="CourseSettings.cpp" />
     <ClCompile Include="CreatingNewCourse.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="PasswordCheck.cpp" />
     <ClCompile Include="StudentMode.cpp" />
     <ClCompile Include="TeacherCourseView.cpp" />
     <ClCompile Include="TeacherMode.cpp" />
@@ -139,6 +140,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="CreatingNewCourse.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="PasswordCheck.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="StudentMode.h">
@@ -160,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreatingNewCourse.resx">
       <DependentUpon>CreatingNewCourse.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasswordCheck.resx">
+      <DependentUpon>PasswordCheck.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StudentMode.resx">
       <DependentUpon>StudentMode.h</DependentUpon>

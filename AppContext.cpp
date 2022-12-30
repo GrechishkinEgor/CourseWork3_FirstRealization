@@ -10,6 +10,7 @@ CourseWork::CurrentApplicationContext::CurrentApplicationContext()
 
     /*Создание пустого курса*/
     CurrentCourse = gcnew Course;
+    Path = "";
 
     ChoiceModeWin->Show();
     return;
@@ -96,4 +97,9 @@ CourseWork::Course^ CourseWork::CurrentApplicationContext::GetCourse()
 System::String^ CourseWork::CurrentApplicationContext::GetPath()
 {
     return Path;
+}
+
+bool CourseWork::CurrentApplicationContext::CheckTeacherPassword(String^ Password)
+{
+    return CurrentCourse->CheckPassword(Password);
 }

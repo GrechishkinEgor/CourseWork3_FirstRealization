@@ -19,6 +19,7 @@ namespace CourseWork
 		String^ GetCourseName();
 		String^ GetTeacherName();
 		bool IsInDevelopment();
+		bool CheckPassword(String^ UserPassword);
 
 		void SetCourseName(String^ Name);
 		void SetTeacherName(String^ Name);

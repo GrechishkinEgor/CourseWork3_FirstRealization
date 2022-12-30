@@ -23,6 +23,7 @@ System::Void CourseWork::TeacherMode::OpenCourseButton_Click(System::Object^ sen
 	if (OpenCourseDialog->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 	{
 		CurrentApplicationContext::OpenCourse(OpenCourseDialog->FileName);
+
 		CurrentApplicationContext::ShowOnlyTeacherCourseViewWin();
 	}
 	return System::Void();

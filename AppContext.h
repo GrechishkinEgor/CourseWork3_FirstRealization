@@ -5,6 +5,7 @@
 #include "CreatingNewCourse.h"
 #include "TeacherCourseView.h"
 #include "CourseSettings.h"
+#include "PasswordCheck.h"
 #include "Course.h"
 
 namespace CourseWork
@@ -54,6 +55,8 @@ namespace CourseWork
 		static Course^ GetCourse();
 		//Получить путь файла с курсом ("", если файла нет)
 		static String^ GetPath();
+		//Проверка пароля преподавателя. Истина - пароль верный
+		static bool CheckTeacherPassword(String^ Password);
 	};
 
 	

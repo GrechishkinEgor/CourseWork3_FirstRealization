@@ -12,7 +12,7 @@ CourseWork::Course::Course(System::String^ CourseName, System::String^ TeacherNa
 {
     this->CourseName = CourseName;
     this->TeacherName = TeacherName;
-    this->TeacherPassword = TeacherPassword;
+    this->TeacherPassword = TeacherPassword->Trim(' '); //Удаление пробелов в начале и конце пароля
     return;
 }
 
@@ -35,6 +35,11 @@ System::String^ CourseWork::Course::GetTeacherName()
 bool CourseWork::Course::IsInDevelopment()
 {
     return InDevelopmentFlag;
+}
+
+bool CourseWork::Course::CheckPassword(String^ UserPassword)
+{
+    return TeacherPassword == UserPassword->Trim(' '); //Усекаются пробелы в начале и конце
 }
 
 void CourseWork::Course::SetCourseName(String^ Name)
