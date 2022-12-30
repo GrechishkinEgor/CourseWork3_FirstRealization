@@ -45,6 +45,8 @@ namespace CourseWork {
 	private: System::Windows::Forms::ToolStripMenuItem^ íîâûéÒåñòToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ íàñòðîéêèÊóðñàToolStripMenuItem;
 	private: System::Windows::Forms::SaveFileDialog^ SaveCourseDialog;
+	private: System::Windows::Forms::DataGridView^ TestsDataGridView;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ TestName;
 
 
 
@@ -68,7 +70,10 @@ namespace CourseWork {
 			this->íîâûéÒåñòToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->íàñòðîéêèÊóðñàToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->SaveCourseDialog = (gcnew System::Windows::Forms::SaveFileDialog());
+			this->TestsDataGridView = (gcnew System::Windows::Forms::DataGridView());
+			this->TestName = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->GeneralMenuStrip->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->TestsDataGridView))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// GeneralMenuStrip
@@ -115,11 +120,31 @@ namespace CourseWork {
 			this->SaveCourseDialog->DefaultExt = L"course;";
 			this->SaveCourseDialog->Filter = L"Êóðñû|*.course";
 			// 
+			// TestsDataGridView
+			// 
+			this->TestsDataGridView->AllowUserToAddRows = false;
+			this->TestsDataGridView->BackgroundColor = System::Drawing::SystemColors::Control;
+			this->TestsDataGridView->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->TestsDataGridView->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->TestName });
+			this->TestsDataGridView->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->TestsDataGridView->GridColor = System::Drawing::SystemColors::ActiveBorder;
+			this->TestsDataGridView->Location = System::Drawing::Point(0, 24);
+			this->TestsDataGridView->Name = L"TestsDataGridView";
+			this->TestsDataGridView->Size = System::Drawing::Size(688, 340);
+			this->TestsDataGridView->TabIndex = 1;
+			// 
+			// TestName
+			// 
+			this->TestName->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::Fill;
+			this->TestName->HeaderText = L"Íàçâàíèå òåñòà";
+			this->TestName->Name = L"TestName";
+			// 
 			// TeacherCourseView
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(688, 364);
+			this->Controls->Add(this->TestsDataGridView);
 			this->Controls->Add(this->GeneralMenuStrip);
 			this->MainMenuStrip = this->GeneralMenuStrip;
 			this->Name = L"TeacherCourseView";
@@ -128,6 +153,7 @@ namespace CourseWork {
 			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &TeacherCourseView::TeacherCourseView_FormClosing);
 			this->GeneralMenuStrip->ResumeLayout(false);
 			this->GeneralMenuStrip->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->TestsDataGridView))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
