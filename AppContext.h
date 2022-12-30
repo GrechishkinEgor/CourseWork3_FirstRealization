@@ -14,11 +14,14 @@
 * Данный заголовочный файл подключается ко всем файлам cpp, реализующим методы форм.
 * Для запуска приложения через Application::Run один раз вызывается единственный конструктор ApplicationContext.
 * Созданный объект передается как аргумент в метод Run.
+* Отображение стартовой формы прописывается в конструкторе.
 * Формы, которые отображаются модально (через метод ShowDialog), не включаются в список статических полей контекста.
 * Остальные формы всегда имеют один экземпляр, ссылка на который хранится в статическом поле.
 * Действие метода HideAllForms распространяется только на немодальные формы.
 * Немодальные формы выводятся на экран при помощи методов, начинающихся с ShowOnly (все такие методы вызывают HideAllForms).
 * При необходимости методы ShowOnly создают новый экземпляр формы.
+* Помимо форм контекст хранит данные об открытом курсе и полном имени файла с курсом.
+* Любая форма может воспользоваться методами, влияющими на текущий курс
 */
 namespace CourseWork
 {
@@ -30,7 +33,7 @@ namespace CourseWork
 		static ChoiceMode^ ChoiceModeWin;
 		static TeacherMode^ TeacherModeWin;
 		static StudentMode^ StudentModeWin;
-		static CreatingNewCourse^ CreatingNewCourseWin;
+		//static CreatingNewCourse^ CreatingNewCourseWin;
 		static TeacherCourseView^ TeacherCourseViewWin;
 
 		/*Открытый в приложении курс*/
@@ -51,7 +54,6 @@ namespace CourseWork
 		static void ShowOnlyChoiceModeWin();
 		static void ShowOnlyTeacherModeWin();
 		static void ShowOnlyStudentModeWin();
-		static void ShowOnlyCreatingNewCourseWin();
 		static void ShowOnlyTeacherCourseViewWin();
 
 		/* 

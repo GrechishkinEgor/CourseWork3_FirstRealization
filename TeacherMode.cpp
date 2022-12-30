@@ -8,7 +8,9 @@ System::Void CourseWork::TeacherMode::ReturnToChoiceModeButton_Click(System::Obj
 
 System::Void CourseWork::TeacherMode::CreatingNewCourseButton_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	CurrentApplicationContext::ShowOnlyCreatingNewCourseWin();
+	CreatingNewCourse^ CreatingNewCourseWin = gcnew CreatingNewCourse;
+	if (CreatingNewCourseWin->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		CurrentApplicationContext::ShowOnlyTeacherCourseViewWin();
 	return System::Void();
 }
 

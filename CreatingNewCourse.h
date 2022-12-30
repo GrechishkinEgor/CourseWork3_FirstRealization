@@ -1,7 +1,8 @@
 #pragma once
 /*Данная форма задает настройки нового курса.
-* Новый экземпляр формы создается в CurrentApplicationContext каждый раз при показе.
+* Форма вызывается модально из TeacherMode
 * При нажатии кнопки ОК создается новый экземпляр Course, который заменяет текущий курс в CurrentApplicationContext.
+* Значение свойства DialogResult устанавливается в ОК, если новый курс создан.
 * После происходит переход на форму TeacherCourseView для редактирования нового курса.
 * Закрытие формы не через кнопку ОК возвращает пользователя на форму TeacherMode для выбора дальнейших действий
 */
@@ -180,7 +181,6 @@ namespace CourseWork {
 			this->Name = L"CreatingNewCourse";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Создание нового курса";
-			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &CreatingNewCourse::CreatingNewCourse_FormClosing);
 			this->GeneralGroupBox->ResumeLayout(false);
 			this->GeneralGroupBox->PerformLayout();
 			this->ResumeLayout(false);
@@ -189,6 +189,6 @@ namespace CourseWork {
 #pragma endregion
 	private: System::Void CancelButton_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void OKButton_Click(System::Object^ sender, System::EventArgs^ e);
-private: System::Void CreatingNewCourse_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
+
 };
 }

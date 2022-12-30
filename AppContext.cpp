@@ -2,15 +2,15 @@
 
 CourseWork::CurrentApplicationContext::CurrentApplicationContext()
 {
+    /*Создание пустого курса*/
+    CurrentCourse = gcnew Course;
+    Path = "";
+    
     /*Создание всех окон (для корректной работы HideAllForms)*/
     ChoiceModeWin = gcnew ChoiceMode;
     TeacherModeWin = gcnew TeacherMode;
     StudentModeWin = gcnew StudentMode;
-    CreatingNewCourseWin = gcnew CreatingNewCourse;
-
-    /*Создание пустого курса*/
-    CurrentCourse = gcnew Course;
-    Path = "";
+    TeacherCourseViewWin = gcnew TeacherCourseView;
 
     ChoiceModeWin->Show();
     return;
@@ -21,7 +21,7 @@ void CourseWork::CurrentApplicationContext::HideAllForms()
     ChoiceModeWin->Hide();
     TeacherModeWin->Hide();
     StudentModeWin->Hide();
-    CreatingNewCourseWin->Hide();
+    TeacherCourseViewWin->Hide();
     return;
 }
 
@@ -43,14 +43,6 @@ void CourseWork::CurrentApplicationContext::ShowOnlyStudentModeWin()
 {
     CurrentApplicationContext::HideAllForms();
     StudentModeWin->Show();
-    return;
-}
-
-void CourseWork::CurrentApplicationContext::ShowOnlyCreatingNewCourseWin()
-{
-    HideAllForms();
-    CreatingNewCourseWin = gcnew CreatingNewCourse;
-    CreatingNewCourseWin->Show();
     return;
 }
 
