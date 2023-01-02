@@ -26,6 +26,8 @@ namespace CourseWork
 
 		void SetCourseName(String^ Name);
 		void SetTeacherName(String^ Name);
+		bool SetNewPassword(String^ OldPassword, String^ NewPassword);	//Истина, если старый пароль верный и смена пароля прошла успешно
+		void FinishDevelopment();
 
 		void AddNewTest(Test^ NewTest);		//Необходимо протестировать
 		bool RemoveTestWithId(int Id);		//Необходимо протестировать

@@ -121,6 +121,9 @@ namespace CourseWork {
 			// TestsDataGridView
 			// 
 			this->TestsDataGridView->AllowUserToAddRows = false;
+			this->TestsDataGridView->AllowUserToDeleteRows = false;
+			this->TestsDataGridView->AllowUserToResizeColumns = false;
+			this->TestsDataGridView->AllowUserToResizeRows = false;
 			this->TestsDataGridView->BackgroundColor = System::Drawing::SystemColors::Control;
 			this->TestsDataGridView->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->TestsDataGridView->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(2) {
@@ -130,9 +133,13 @@ namespace CourseWork {
 			this->TestsDataGridView->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->TestsDataGridView->GridColor = System::Drawing::SystemColors::ActiveBorder;
 			this->TestsDataGridView->Location = System::Drawing::Point(0, 24);
+			this->TestsDataGridView->MultiSelect = false;
 			this->TestsDataGridView->Name = L"TestsDataGridView";
+			this->TestsDataGridView->ReadOnly = true;
+			this->TestsDataGridView->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->TestsDataGridView->Size = System::Drawing::Size(688, 340);
 			this->TestsDataGridView->TabIndex = 1;
+			this->TestsDataGridView->MouseDoubleClick += gcnew System::Windows::Forms::MouseEventHandler(this, &TeacherCourseView::TestsDataGridView_MouseDoubleClick);
 			// 
 			// ID
 			// 
@@ -145,6 +152,7 @@ namespace CourseWork {
 			this->TestName->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::Fill;
 			this->TestName->HeaderText = L"Íàçâàíèå òåñòà";
 			this->TestName->Name = L"TestName";
+			this->TestName->ReadOnly = true;
 			// 
 			// TeacherCourseView
 			// 
@@ -171,5 +179,7 @@ private: System::Void TeacherCourseView_FormClosing(System::Object^ sender, Syst
 private: System::Void ñîõğàíèòüToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void ñîõğàíèòüÊàêToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void íîâûéÒåñòToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void TestsDataGridView_MouseDoubleClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
+
 };
 }

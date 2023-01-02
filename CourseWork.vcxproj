@@ -131,6 +131,7 @@
     <ClCompile Include="TeacherCourseView.cpp" />
     <ClCompile Include="TeacherMode.cpp" />
     <ClCompile Include="Test.cpp" />
+    <ClCompile Include="TestView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppContext.h" />
@@ -160,6 +161,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Test.h" />
+    <ClInclude Include="TestView.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ChoiceMode.resx">
@@ -185,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TeacherMode.resx">
       <DependentUpon>TeacherMode.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestView.resx">
+      <DependentUpon>TestView.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

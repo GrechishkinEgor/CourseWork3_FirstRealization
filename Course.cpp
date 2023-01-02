@@ -61,6 +61,23 @@ void CourseWork::Course::SetTeacherName(String^ Name)
     return;
 }
 
+bool CourseWork::Course::SetNewPassword(String^ OldPassword, String^ NewPassword)
+{
+    if (OldPassword == this->TeacherPassword)
+    {
+        this->TeacherPassword = NewPassword;
+        return true;
+    }
+    else
+        return false;
+}
+
+void CourseWork::Course::FinishDevelopment()
+{
+    InDevelopmentFlag = false;
+    return;
+}
+
 void CourseWork::Course::AddNewTest(Test^ NewTest)
 {
     IdLastTest++;

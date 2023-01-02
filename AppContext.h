@@ -8,6 +8,7 @@
 #include "PasswordCheck.h"
 #include "CreatingNewTest.h"
 #include "Course.h"
+#include "TestView.h"
 
 /*Текущий контекст приложения (ApplicationContext).
 * Все имеющиеся в проекте формы подключаются в этот заголовочный файл.
