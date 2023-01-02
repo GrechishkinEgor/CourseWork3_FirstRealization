@@ -19,44 +19,7 @@ System::Void CourseWork::TeacherCourseView::настройки урсаToolStripMenuItem_Clic
 
 System::Void CourseWork::TeacherCourseView::TeacherCourseView_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e)
 {
-    static bool DoubleCall = false; //Application::Exit повторно вызывает эту функцию
-
-    if (!DoubleCall)
-    {
-        if (CurrentApplicationContext::GetPath() == "")
-        {
-           
-            System::Windows::Forms::DialogResult Result = System::Windows::Forms::MessageBox::Show("ƒл€ курса не создан файл. —оздать и сохранить данные?", "—оздание файла с курсом", System::Windows::Forms::MessageBoxButtons::YesNoCancel, System::Windows::Forms::MessageBoxIcon::Exclamation);
-            if (Result == System::Windows::Forms::DialogResult::Yes)
-            {
-                if (SaveCourseDialog->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-                {
-                    CurrentApplicationContext::SaveCourse(SaveCourseDialog->FileName);
-                    DoubleCall = true;
-                    Application::Exit();
-                }
-                else
-                    e->Cancel = true;
-            }
-            else
-            {
-                if (Result == System::Windows::Forms::DialogResult::No)
-                {
-                    DoubleCall = true;
-                    Application::Exit();
-                }
-                else
-                    e->Cancel = true;
-            }
-        }
-        else
-        {
-            CurrentApplicationContext::SaveCourse(CurrentApplicationContext::GetPath());
-            Application::Exit();
-        }
-    }
-    
-        
+    Application::Exit();
     return System::Void();
 }
 
