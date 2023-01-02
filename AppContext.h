@@ -7,6 +7,7 @@
 #include "CourseSettings.h"
 #include "PasswordCheck.h"
 #include "CreatingNewTest.h"
+#include "ChangeTeacherPassword.h"
 #include "Course.h"
 #include "TestView.h"
 

@@ -126,6 +126,7 @@ namespace CourseWork {
 			this->ChangePasswordButton->TabIndex = 6;
 			this->ChangePasswordButton->Text = L"Сменить пароль преподавателя";
 			this->ChangePasswordButton->UseVisualStyleBackColor = true;
+			this->ChangePasswordButton->Click += gcnew System::EventHandler(this, &CourseSettings::ChangePasswordButton_Click);
 			// 
 			// FinishDevelopmentButton
 			// 
@@ -171,5 +172,6 @@ namespace CourseWork {
 #pragma endregion
 	private: System::Void OKButton_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void FinishDevelopmentButton_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void ChangePasswordButton_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

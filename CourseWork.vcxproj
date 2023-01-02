@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AppContext.cpp" />
+    <ClCompile Include="ChangeTeacherPassword.cpp" />
     <ClCompile Include="ChoiceMode.cpp" />
     <ClCompile Include="Course.cpp" />
     <ClCompile Include="CourseSettings.cpp" />
@@ -135,6 +136,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppContext.h" />
+    <ClInclude Include="ChangeTeacherPassword.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="ChoiceMode.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -166,6 +170,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ChangeTeacherPassword.resx">
+      <DependentUpon>ChangeTeacherPassword.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ChoiceMode.resx">
       <DependentUpon>ChoiceMode.h</DependentUpon>
     </EmbeddedResource>

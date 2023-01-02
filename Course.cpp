@@ -65,7 +65,7 @@ bool CourseWork::Course::SetNewPassword(String^ OldPassword, String^ NewPassword
 {
     if (OldPassword == this->TeacherPassword)
     {
-        this->TeacherPassword = NewPassword;
+        this->TeacherPassword = NewPassword->Trim(' ');
         return true;
     }
     else

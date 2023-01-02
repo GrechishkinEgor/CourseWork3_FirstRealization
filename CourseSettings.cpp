@@ -38,3 +38,10 @@ System::Void CourseWork::CourseSettings::FinishDevelopmentButton_Click(System::O
 	}
 	return System::Void();
 }
+
+System::Void CourseWork::CourseSettings::ChangePasswordButton_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	ChangeTeacherPassword^ ChangeTeacherPasswordWin = gcnew ChangeTeacherPassword;
+	ChangeTeacherPasswordWin->ShowDialog();
+	return System::Void();
+}
