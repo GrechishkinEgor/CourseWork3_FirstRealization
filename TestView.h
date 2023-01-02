@@ -40,6 +40,9 @@ namespace CourseWork {
 
 	private: System::Windows::Forms::MenuStrip^ GeneralMenuStrip;
 	private: System::Windows::Forms::ToolStripMenuItem^ Û‰‡ÎËÚ¸ToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ ‰Ó·‡‚ËÚ¸«‡‰‡ÌËÂToolStripMenuItem;
+	private: System::Windows::Forms::DataGridView^ TasksGridView;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ TasksList;
 
 	private:
 		/// <summary>
@@ -59,8 +62,12 @@ namespace CourseWork {
 			this->TestNameLabel = (gcnew System::Windows::Forms::Label());
 			this->GeneralMenuStrip = (gcnew System::Windows::Forms::MenuStrip());
 			this->Û‰‡ÎËÚ¸ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->TasksGridView = (gcnew System::Windows::Forms::DataGridView());
+			this->TasksList = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->‰Ó·‡‚ËÚ¸«‡‰‡ÌËÂToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->InfoPanel->SuspendLayout();
 			this->GeneralMenuStrip->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->TasksGridView))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// InfoPanel
@@ -80,6 +87,7 @@ namespace CourseWork {
 			this->TestNameTextBox->Name = L"TestNameTextBox";
 			this->TestNameTextBox->Size = System::Drawing::Size(435, 20);
 			this->TestNameTextBox->TabIndex = 1;
+			this->TestNameTextBox->TextChanged += gcnew System::EventHandler(this, &TestView::TestNameTextBox_TextChanged);
 			this->TestNameTextBox->Leave += gcnew System::EventHandler(this, &TestView::TestNameTextBox_Leave);
 			// 
 			// TestNameLabel
@@ -93,7 +101,10 @@ namespace CourseWork {
 			// 
 			// GeneralMenuStrip
 			// 
-			this->GeneralMenuStrip->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->Û‰‡ÎËÚ¸ToolStripMenuItem });
+			this->GeneralMenuStrip->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->‰Ó·‡‚ËÚ¸«‡‰‡ÌËÂToolStripMenuItem,
+					this->Û‰‡ÎËÚ¸ToolStripMenuItem
+			});
 			this->GeneralMenuStrip->Location = System::Drawing::Point(0, 0);
 			this->GeneralMenuStrip->Name = L"GeneralMenuStrip";
 			this->GeneralMenuStrip->Size = System::Drawing::Size(499, 24);
@@ -103,15 +114,45 @@ namespace CourseWork {
 			// Û‰‡ÎËÚ¸ToolStripMenuItem
 			// 
 			this->Û‰‡ÎËÚ¸ToolStripMenuItem->Name = L"Û‰‡ÎËÚ¸ToolStripMenuItem";
-			this->Û‰‡ÎËÚ¸ToolStripMenuItem->Size = System::Drawing::Size(63, 20);
-			this->Û‰‡ÎËÚ¸ToolStripMenuItem->Text = L"”‰‡ÎËÚ¸";
+			this->Û‰‡ÎËÚ¸ToolStripMenuItem->Size = System::Drawing::Size(88, 20);
+			this->Û‰‡ÎËÚ¸ToolStripMenuItem->Text = L"”‰‡ÎËÚ¸ ÚÂÒÚ";
 			this->Û‰‡ÎËÚ¸ToolStripMenuItem->Click += gcnew System::EventHandler(this, &TestView::Û‰‡ÎËÚ¸ToolStripMenuItem_Click);
+			// 
+			// TasksGridView
+			// 
+			this->TasksGridView->AllowUserToAddRows = false;
+			this->TasksGridView->AllowUserToDeleteRows = false;
+			this->TasksGridView->BackgroundColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->TasksGridView->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->TasksGridView->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->TasksList });
+			this->TasksGridView->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->TasksGridView->Location = System::Drawing::Point(0, 60);
+			this->TasksGridView->MultiSelect = false;
+			this->TasksGridView->Name = L"TasksGridView";
+			this->TasksGridView->ReadOnly = true;
+			this->TasksGridView->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
+			this->TasksGridView->Size = System::Drawing::Size(499, 265);
+			this->TasksGridView->TabIndex = 2;
+			// 
+			// TasksList
+			// 
+			this->TasksList->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::Fill;
+			this->TasksList->HeaderText = L"«‡‰‡ÌËˇ";
+			this->TasksList->Name = L"TasksList";
+			this->TasksList->ReadOnly = true;
+			// 
+			// ‰Ó·‡‚ËÚ¸«‡‰‡ÌËÂToolStripMenuItem
+			// 
+			this->‰Ó·‡‚ËÚ¸«‡‰‡ÌËÂToolStripMenuItem->Name = L"‰Ó·‡‚ËÚ¸«‡‰‡ÌËÂToolStripMenuItem";
+			this->‰Ó·‡‚ËÚ¸«‡‰‡ÌËÂToolStripMenuItem->Size = System::Drawing::Size(117, 20);
+			this->‰Ó·‡‚ËÚ¸«‡‰‡ÌËÂToolStripMenuItem->Text = L"ƒÓ·‡‚ËÚ¸ Á‡‰‡ÌËÂ";
 			// 
 			// TestView
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(499, 325);
+			this->Controls->Add(this->TasksGridView);
 			this->Controls->Add(this->InfoPanel);
 			this->Controls->Add(this->GeneralMenuStrip);
 			this->MainMenuStrip = this->GeneralMenuStrip;
@@ -123,6 +164,7 @@ namespace CourseWork {
 			this->InfoPanel->PerformLayout();
 			this->GeneralMenuStrip->ResumeLayout(false);
 			this->GeneralMenuStrip->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->TasksGridView))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -133,5 +175,7 @@ namespace CourseWork {
 	private: System::Void TestNameTextBox_Leave(System::Object^ sender, System::EventArgs^ e);
 private: System::Void Û‰‡ÎËÚ¸ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void TestView_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
+private: System::Void TestNameTextBox_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

@@ -57,6 +57,9 @@
     <ClInclude Include="ChangeTeacherPassword.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="EditChoiceFewAnswer.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChoiceMode.cpp">
@@ -100,6 +103,9 @@
     </ClCompile>
     <ClCompile Include="ChangeTeacherPassword.cpp">
       <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="EditChoiceFewAnswer.cpp">
+      <Filter>Файлы заголовков</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

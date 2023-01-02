@@ -1,5 +1,7 @@
 #pragma once
-
+/*Форма меняет пароль преподавателя в текущем курсе
+* Форма вызывается модально
+*/
 namespace CourseWork {
 
 	using namespace System;
