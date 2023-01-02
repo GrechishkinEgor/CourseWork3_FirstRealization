@@ -39,6 +39,11 @@ int CourseWork::Task::GetId()
     return Id;
 }
 
+bool CourseWork::Task::IsAnswersRandomOrder()
+{
+    return AnswersRandomOrder;
+}
+
 void CourseWork::Task::SetQuestion(String^ Question)
 {
     this->Question = Question;
@@ -57,4 +62,35 @@ void CourseWork::Task::SetExecutionTime(int Time)
 void CourseWork::Task::SetId(int Id)
 {
     this->Id = Id;
+}
+
+void CourseWork::Task::SetAnswersRandomOrder(bool Random)
+{
+    AnswersRandomOrder = Random;
+}
+
+void CourseWork::Task::ReadFromFile(BinaryReader^ Reader)
+{
+    Question = Reader->ReadString();
+    Answers = gcnew array<String^>(Reader->ReadInt32());
+    for (int i = 0; i < Answers->Length; i++)
+        Answers[i] = Reader->ReadString();
+    MaxMark = Reader->ReadInt32();
+    ExecutionTime = Reader->ReadInt32();
+    Id = Reader->ReadInt32();
+    AnswersRandomOrder = Reader->ReadBoolean();
+    return;
+}
+
+void CourseWork::Task::WriteInFile(BinaryWriter^ Writer)
+{
+    Writer->Write(Question);
+    Writer->Write(Answers->Length);
+    for (int i = 0; i < Answers->Length; i++)
+        Writer->Write(Answers[i]);
+    Writer->Write(MaxMark);
+    Writer->Write(ExecutionTime);
+    Writer->Write(Id);
+    Writer->Write(AnswersRandomOrder);
+    return;
 }
