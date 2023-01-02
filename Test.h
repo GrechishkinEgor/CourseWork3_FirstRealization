@@ -1,4 +1,5 @@
 #pragma once
+#include "Task.h"
 
 namespace CourseWork
 {
@@ -9,6 +10,7 @@ namespace CourseWork
 	private:
 		String^ TestName;
 		int Id;
+		array<Task^>^ TasksList;
 	public:
 		Test();
 		Test(String^ TestName);
@@ -16,9 +18,13 @@ namespace CourseWork
 
 		void SetTestName(String^ Name);
 		void SetId(int Id);
+		void AddNewTask(Task^ NewTask);	//Протестировать
 
 		String^ GetTestName();
 		int GetId();
+		Task^ GetTaskWithId(int Id);	//Протестировать
+
+		bool RemoveTaskWithId(int Id);	//Протестировать
 
 		void WriteInFile(BinaryWriter^ Writer);
 		void ReadFromFile(BinaryReader^ Reader);

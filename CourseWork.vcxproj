@@ -130,6 +130,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PasswordCheck.cpp" />
     <ClCompile Include="StudentMode.cpp" />
+    <ClCompile Include="Task.cpp" />
     <ClCompile Include="TeacherCourseView.cpp" />
     <ClCompile Include="TeacherMode.cpp" />
     <ClCompile Include="Test.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="StudentMode.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Task.h" />
     <ClInclude Include="TeacherCourseView.h">
       <FileType>CppForm</FileType>
     </ClInclude>
