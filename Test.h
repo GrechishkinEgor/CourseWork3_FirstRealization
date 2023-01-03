@@ -11,6 +11,7 @@ namespace CourseWork
 		String^ TestName;
 		int Id;
 		array<Task^>^ TasksList;
+		int IdLastTask;
 	public:
 		Test();
 		Test(String^ TestName);

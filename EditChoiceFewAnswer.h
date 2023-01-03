@@ -44,11 +44,13 @@ namespace CourseWork {
 
 	private: System::Windows::Forms::TextBox^ TotalMarkTextBox;
 	private: System::Windows::Forms::Label^ TotalMark;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Answer;
-	private: System::Windows::Forms::DataGridViewCheckBoxColumn^ RightAnswerFlag;
+
+
 	private: System::Windows::Forms::TextBox^ ExecutionTimeTextBox;
 
 	private: System::Windows::Forms::Label^ ExecutionTimeLabel;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Answer;
+	private: System::Windows::Forms::DataGridViewCheckBoxColumn^ RightAnswerFlag;
 
 
 
@@ -196,8 +198,11 @@ namespace CourseWork {
 			// RightAnswerFlag
 			// 
 			this->RightAnswerFlag->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::ColumnHeader;
+			this->RightAnswerFlag->FalseValue = L"Wrong";
 			this->RightAnswerFlag->HeaderText = L"Правильный ответ";
+			this->RightAnswerFlag->IndeterminateValue = L"Wrong";
 			this->RightAnswerFlag->Name = L"RightAnswerFlag";
+			this->RightAnswerFlag->TrueValue = L"Right";
 			this->RightAnswerFlag->Width = 97;
 			// 
 			// EditChoiceFewAnswer

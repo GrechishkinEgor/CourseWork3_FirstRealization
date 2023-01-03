@@ -5,6 +5,9 @@ CourseWork::TestView::TestView(Test^ CurrentTest)
 	InitializeComponent();
 	this->CurrentTest = CurrentTest;
 	this->TestNameTextBox->Text = CurrentTest->GetTestName();
+	array<Task^>^ TasksList = CurrentTest->GetTasksList();
+	for (int i = 0; i < TasksList->Length; i++)
+		TasksGridView->Rows->Add(TasksList[i]->GetQuestion());
 	return;
 }
 

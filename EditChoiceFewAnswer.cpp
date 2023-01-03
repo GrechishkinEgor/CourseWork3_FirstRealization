@@ -23,7 +23,7 @@ System::Void CourseWork::EditChoiceFewAnswer::OKButton_Click(System::Object^ sen
 {
     if (QuestionTextBox->Text == "")
     {
-        MessageBox::Show("Не указано вопрос.", "Вопрос", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+        MessageBox::Show("Не указан вопрос.", "Вопрос", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
         return System::Void();
     }
     
@@ -59,17 +59,27 @@ System::Void CourseWork::EditChoiceFewAnswer::OKButton_Click(System::Object^ sen
         ExecutionTimeTextBox->Text = "0";
 
 
-    if (AnswersGridView->Rows->Count < 2)
+    bool FlagRightAnswers = false;
+    if (AnswersGridView->Rows->Count < 3)
     {
         MessageBox::Show("Количество ответов должно быть не меньше 2.", "Ответы", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
         return System::Void();
     }
     for (int i = 0; i < AnswersGridView->Rows->Count; i++)
+    {
         if (AnswersGridView[0, i]->Value == "")
         {
-            MessageBox::Show("Пустые варианты ответов не допускаются", "Ответы", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+            MessageBox::Show("Пустые варианты ответов не допускаются.", "Ответы", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
             return System::Void();
         }
+        if (AnswersGridView[1, i]->Value == "Right")
+            FlagRightAnswers = true;
+    }
+    if (!FlagRightAnswers)
+    {
+        MessageBox::Show("Ни один ответ не является правильным.", "Ответы", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+        return System::Void();
+    }
     
 
     CurrentTask->SetQuestion(QuestionTextBox->Text);

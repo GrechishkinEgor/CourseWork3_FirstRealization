@@ -5,6 +5,7 @@ CourseWork::Test::Test()
     TestName = "";
     Id = 0;
     TasksList = gcnew array<Task^>(0);
+    IdLastTask = 0;
 }
 
 CourseWork::Test::Test(String^ TestName) : Test()
@@ -33,6 +34,8 @@ void CourseWork::Test::SetId(int Id)
 void CourseWork::Test::AddNewTask(Task^ NewTask)
 {
     array<Task^>::Resize(TasksList, TasksList->Length + 1);
+    this->IdLastTask++;
+    NewTask->SetId(this->IdLastTask);
     TasksList[TasksList->Length - 1] = NewTask;
 }
 
@@ -79,6 +82,7 @@ void CourseWork::Test::WriteInFile(BinaryWriter^ Writer)
     Writer->Write(TasksList->Length);
     for (int i = 0; i < TasksList->Length; i++)
         TasksList[i]->WriteInFile(Writer);
+    Writer->Write(IdLastTask);
     return;
 }
 
@@ -89,5 +93,6 @@ void CourseWork::Test::ReadFromFile(BinaryReader^ Reader)
     TasksList = gcnew array<Task^>(Reader->ReadInt32());
     for (int i = 0; i < TasksList->Length; i++)
         TasksList[i] = gcnew Task(Reader);
+    IdLastTask = Reader->ReadInt32();
     return;
 }
