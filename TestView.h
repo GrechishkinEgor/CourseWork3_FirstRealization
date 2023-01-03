@@ -4,7 +4,7 @@
 * В конструктор передается ссылка на выбранный курс.
 * Если тест удаляется, то в DialogResult выставляется Abort.
 */
-extern ref class Test;
+extern ref class CourseWork::Test;
 namespace CourseWork {
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -61,10 +61,10 @@ namespace CourseWork {
 			this->TestNameTextBox = (gcnew System::Windows::Forms::TextBox());
 			this->TestNameLabel = (gcnew System::Windows::Forms::Label());
 			this->GeneralMenuStrip = (gcnew System::Windows::Forms::MenuStrip());
+			this->добавитьЗаданиеToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->удалитьToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->TasksGridView = (gcnew System::Windows::Forms::DataGridView());
 			this->TasksList = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->добавитьЗаданиеToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->InfoPanel->SuspendLayout();
 			this->GeneralMenuStrip->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->TasksGridView))->BeginInit();
@@ -87,7 +87,6 @@ namespace CourseWork {
 			this->TestNameTextBox->Name = L"TestNameTextBox";
 			this->TestNameTextBox->Size = System::Drawing::Size(435, 20);
 			this->TestNameTextBox->TabIndex = 1;
-			this->TestNameTextBox->TextChanged += gcnew System::EventHandler(this, &TestView::TestNameTextBox_TextChanged);
 			this->TestNameTextBox->Leave += gcnew System::EventHandler(this, &TestView::TestNameTextBox_Leave);
 			// 
 			// TestNameLabel
@@ -110,6 +109,13 @@ namespace CourseWork {
 			this->GeneralMenuStrip->Size = System::Drawing::Size(499, 24);
 			this->GeneralMenuStrip->TabIndex = 1;
 			this->GeneralMenuStrip->Text = L"menuStrip1";
+			// 
+			// добавитьЗаданиеToolStripMenuItem
+			// 
+			this->добавитьЗаданиеToolStripMenuItem->Name = L"добавитьЗаданиеToolStripMenuItem";
+			this->добавитьЗаданиеToolStripMenuItem->Size = System::Drawing::Size(117, 20);
+			this->добавитьЗаданиеToolStripMenuItem->Text = L"Добавить задание";
+			this->добавитьЗаданиеToolStripMenuItem->Click += gcnew System::EventHandler(this, &TestView::добавитьЗаданиеToolStripMenuItem_Click);
 			// 
 			// удалитьToolStripMenuItem
 			// 
@@ -141,12 +147,6 @@ namespace CourseWork {
 			this->TasksList->Name = L"TasksList";
 			this->TasksList->ReadOnly = true;
 			// 
-			// добавитьЗаданиеToolStripMenuItem
-			// 
-			this->добавитьЗаданиеToolStripMenuItem->Name = L"добавитьЗаданиеToolStripMenuItem";
-			this->добавитьЗаданиеToolStripMenuItem->Size = System::Drawing::Size(117, 20);
-			this->добавитьЗаданиеToolStripMenuItem->Text = L"Добавить задание";
-			// 
 			// TestView
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -175,7 +175,6 @@ namespace CourseWork {
 	private: System::Void TestNameTextBox_Leave(System::Object^ sender, System::EventArgs^ e);
 private: System::Void удалитьToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void TestView_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
-private: System::Void TestNameTextBox_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
+private: System::Void добавитьЗаданиеToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

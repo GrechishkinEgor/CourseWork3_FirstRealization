@@ -30,3 +30,16 @@ System::Void CourseWork::TestView::TestView_FormClosing(System::Object^ sender, 
 	this->TestNameTextBox_Leave(sender, e);
 	return System::Void();
 }
+
+System::Void CourseWork::TestView::äîáàâèòüÇàäàíèåToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	Task^ NewTask = gcnew Task();
+	EditChoiceFewAnswer^ EditChoiceFewAnswersWin = gcnew EditChoiceFewAnswer(NewTask);
+	if (EditChoiceFewAnswersWin->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+	{
+		CurrentTest->AddNewTask(NewTask);
+		TasksGridView->Rows->Add(NewTask->GetQuestion());
+	}
+		
+	return System::Void();
+}

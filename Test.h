@@ -23,6 +23,7 @@ namespace CourseWork
 		String^ GetTestName();
 		int GetId();
 		Task^ GetTaskWithId(int Id);	//Протестировать
+		array<Task^>^ GetTasksList();
 
 		bool RemoveTaskWithId(int Id);	//Протестировать
 

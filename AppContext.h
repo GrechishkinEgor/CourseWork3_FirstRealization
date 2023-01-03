@@ -1,4 +1,5 @@
 #pragma once
+#include "Course.h"
 #include "ChoiceMode.h"
 #include "TeacherMode.h"
 #include "StudentMode.h"
@@ -8,7 +9,7 @@
 #include "PasswordCheck.h"
 #include "CreatingNewTest.h"
 #include "ChangeTeacherPassword.h"
-#include "Course.h"
+#include "EditChoiceFewAnswer.h"
 #include "TestView.h"
 
 /*Текущий контекст приложения (ApplicationContext).

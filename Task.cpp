@@ -69,6 +69,13 @@ void CourseWork::Task::SetAnswersRandomOrder(bool Random)
     AnswersRandomOrder = Random;
 }
 
+void CourseWork::Task::AddNewAnswer(String^ Answer)
+{
+    array<String^>::Resize(this->Answers, this->Answers->Length + 1);
+    this->Answers[this->Answers->Length - 1] = Answer;
+    return;
+}
+
 void CourseWork::Task::ReadFromFile(BinaryReader^ Reader)
 {
     Question = Reader->ReadString();

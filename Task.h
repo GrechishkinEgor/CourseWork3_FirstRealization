@@ -29,6 +29,7 @@ namespace CourseWork {
 		void SetExecutionTime(int Time);
 		void SetId(int Id);
 		void SetAnswersRandomOrder(bool Random);
+		void AddNewAnswer(String^ Answer);
 
 		void ReadFromFile(BinaryReader^ Reader);
 		void WriteInFile(BinaryWriter^ Writer);

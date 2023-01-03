@@ -1,13 +1,18 @@
 #pragma once
-
+/*Создает или изменяет задание теста.
+* Форма вызывается модально из TestView.
+* В конструктор формы передается ссылка на задание.
+* Если все поля формы заполнены верно и нажата кнопка ОК, в DialogResult выставляется OK
+*/
+extern ref class CourseWork::Task;
 namespace CourseWork {
-
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	
 
 	/// <summary>
 	/// Сводка для EditChoiceFewAnswer
@@ -15,13 +20,7 @@ namespace CourseWork {
 	public ref class EditChoiceFewAnswer : public System::Windows::Forms::Form
 	{
 	public:
-		EditChoiceFewAnswer(void)
-		{
-			InitializeComponent();
-			//
-			//TODO: добавьте код конструктора
-			//
-		}
+		EditChoiceFewAnswer(Task^ CurrentTask);
 
 	protected:
 		/// <summary>
@@ -41,7 +40,8 @@ namespace CourseWork {
 
 	private: System::Windows::Forms::TextBox^ QuestionTextBox;
 	private: System::Windows::Forms::Button^ OKButton;
-	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::DataGridView^ AnswersGridView;
+
 	private: System::Windows::Forms::TextBox^ TotalMarkTextBox;
 	private: System::Windows::Forms::Label^ TotalMark;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Answer;
@@ -75,11 +75,11 @@ namespace CourseWork {
 			this->RandomOrderOfAnswersCheckBox = (gcnew System::Windows::Forms::CheckBox());
 			this->QuestionTextBox = (gcnew System::Windows::Forms::TextBox());
 			this->OKButton = (gcnew System::Windows::Forms::Button());
-			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->AnswersGridView = (gcnew System::Windows::Forms::DataGridView());
 			this->Answer = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->RightAnswerFlag = (gcnew System::Windows::Forms::DataGridViewCheckBoxColumn());
 			this->QuestionPanel->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->AnswersGridView))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// QuestionPanel
@@ -94,13 +94,14 @@ namespace CourseWork {
 			this->QuestionPanel->Dock = System::Windows::Forms::DockStyle::Top;
 			this->QuestionPanel->Location = System::Drawing::Point(0, 0);
 			this->QuestionPanel->Name = L"QuestionPanel";
-			this->QuestionPanel->Size = System::Drawing::Size(507, 145);
+			this->QuestionPanel->Size = System::Drawing::Size(484, 145);
 			this->QuestionPanel->TabIndex = 0;
 			// 
 			// ExecutionTimeTextBox
 			// 
 			this->ExecutionTimeTextBox->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->ExecutionTimeTextBox->Location = System::Drawing::Point(426, 99);
+			this->ExecutionTimeTextBox->Location = System::Drawing::Point(403, 99);
+			this->ExecutionTimeTextBox->MaxLength = 4;
 			this->ExecutionTimeTextBox->Name = L"ExecutionTimeTextBox";
 			this->ExecutionTimeTextBox->Size = System::Drawing::Size(69, 20);
 			this->ExecutionTimeTextBox->TabIndex = 6;
@@ -109,7 +110,7 @@ namespace CourseWork {
 			// 
 			this->ExecutionTimeLabel->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
 			this->ExecutionTimeLabel->AutoSize = true;
-			this->ExecutionTimeLabel->Location = System::Drawing::Point(258, 102);
+			this->ExecutionTimeLabel->Location = System::Drawing::Point(235, 102);
 			this->ExecutionTimeLabel->Name = L"ExecutionTimeLabel";
 			this->ExecutionTimeLabel->Size = System::Drawing::Size(165, 13);
 			this->ExecutionTimeLabel->TabIndex = 5;
@@ -118,7 +119,8 @@ namespace CourseWork {
 			// TotalMarkTextBox
 			// 
 			this->TotalMarkTextBox->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->TotalMarkTextBox->Location = System::Drawing::Point(426, 69);
+			this->TotalMarkTextBox->Location = System::Drawing::Point(403, 69);
+			this->TotalMarkTextBox->MaxLength = 4;
 			this->TotalMarkTextBox->Name = L"TotalMarkTextBox";
 			this->TotalMarkTextBox->Size = System::Drawing::Size(69, 20);
 			this->TotalMarkTextBox->TabIndex = 4;
@@ -127,7 +129,7 @@ namespace CourseWork {
 			// 
 			this->TotalMark->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
 			this->TotalMark->AutoSize = true;
-			this->TotalMark->Location = System::Drawing::Point(283, 72);
+			this->TotalMark->Location = System::Drawing::Point(260, 72);
 			this->TotalMark->Name = L"TotalMark";
 			this->TotalMark->Size = System::Drawing::Size(137, 13);
 			this->TotalMark->TabIndex = 3;
@@ -152,7 +154,7 @@ namespace CourseWork {
 			this->QuestionTextBox->Multiline = true;
 			this->QuestionTextBox->Name = L"QuestionTextBox";
 			this->QuestionTextBox->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
-			this->QuestionTextBox->Size = System::Drawing::Size(483, 51);
+			this->QuestionTextBox->Size = System::Drawing::Size(460, 51);
 			this->QuestionTextBox->TabIndex = 0;
 			// 
 			// OKButton
@@ -160,29 +162,30 @@ namespace CourseWork {
 			this->OKButton->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->OKButton->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
-			this->OKButton->Location = System::Drawing::Point(143, 326);
+			this->OKButton->Location = System::Drawing::Point(143, 324);
 			this->OKButton->MinimumSize = System::Drawing::Size(200, 0);
 			this->OKButton->Name = L"OKButton";
-			this->OKButton->Size = System::Drawing::Size(227, 25);
+			this->OKButton->Size = System::Drawing::Size(204, 25);
 			this->OKButton->TabIndex = 1;
 			this->OKButton->Text = L"ОК";
 			this->OKButton->UseVisualStyleBackColor = true;
+			this->OKButton->Click += gcnew System::EventHandler(this, &EditChoiceFewAnswer::OKButton_Click);
 			// 
-			// dataGridView1
+			// AnswersGridView
 			// 
-			this->dataGridView1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+			this->AnswersGridView->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
-			this->dataGridView1->BackgroundColor = System::Drawing::SystemColors::ButtonFace;
-			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(2) {
+			this->AnswersGridView->BackgroundColor = System::Drawing::SystemColors::ButtonFace;
+			this->AnswersGridView->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->AnswersGridView->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(2) {
 				this->Answer,
 					this->RightAnswerFlag
 			});
-			this->dataGridView1->Location = System::Drawing::Point(0, 143);
-			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->Size = System::Drawing::Size(507, 166);
-			this->dataGridView1->TabIndex = 2;
+			this->AnswersGridView->Location = System::Drawing::Point(0, 143);
+			this->AnswersGridView->Name = L"AnswersGridView";
+			this->AnswersGridView->Size = System::Drawing::Size(484, 164);
+			this->AnswersGridView->TabIndex = 2;
 			// 
 			// Answer
 			// 
@@ -201,19 +204,22 @@ namespace CourseWork {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(507, 363);
-			this->Controls->Add(this->dataGridView1);
+			this->ClientSize = System::Drawing::Size(484, 361);
+			this->Controls->Add(this->AnswersGridView);
 			this->Controls->Add(this->OKButton);
 			this->Controls->Add(this->QuestionPanel);
 			this->MinimumSize = System::Drawing::Size(500, 400);
 			this->Name = L"EditChoiceFewAnswer";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Выбор нескольких ответов";
 			this->QuestionPanel->ResumeLayout(false);
 			this->QuestionPanel->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->AnswersGridView))->EndInit();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
+		Task^ CurrentTask;
+private: System::Void OKButton_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

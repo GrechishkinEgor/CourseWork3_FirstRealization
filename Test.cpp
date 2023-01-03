@@ -54,6 +54,11 @@ CourseWork::Task^ CourseWork::Test::GetTaskWithId(int Id)
     return nullptr;
 }
 
+array<CourseWork::Task^>^ CourseWork::Test::GetTasksList()
+{
+    return TasksList;
+}
+
 bool CourseWork::Test::RemoveTaskWithId(int Id)
 {
     for (int i = 0; i < TasksList->Length; i++)
