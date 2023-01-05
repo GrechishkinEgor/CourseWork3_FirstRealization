@@ -60,33 +60,26 @@ System::Void CourseWork::TeacherCourseView::íîâûéÒåñòToolStripMenuItem_Click(Sys
     return System::Void();
 }
 
-System::Void CourseWork::TeacherCourseView::TestsDataGridView_MouseDoubleClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e)
-{
-    try
-    {
-        Course^ CurrentCourse = CurrentApplicationContext::GetCourse();
-        int TestId = Convert::ToInt32(this->TestsDataGridView[0, this->TestsDataGridView->CurrentCell->RowIndex]->Value);
-        Test^ CurrentTest = CurrentCourse->GetTestWithId(TestId);
-        TestView^ TestViewWin = gcnew TestView(CurrentTest);
-        this->Hide();
-        if (TestViewWin->ShowDialog() == System::Windows::Forms::DialogResult::Abort)
-        {
-            CurrentCourse->RemoveTestWithId(TestId);
-            this->TestsDataGridView->Rows->Remove(this->TestsDataGridView->Rows[this->TestsDataGridView->CurrentCell->RowIndex]);
-        }
-        else
-            this->TestsDataGridView[1, this->TestsDataGridView->CurrentCell->RowIndex]->Value = CurrentTest->GetTestName();
-    }
-    catch (System::NullReferenceException^ e)
-    {
-
-    }
-    this->Show();
-    return System::Void();
-}
-
 System::Void CourseWork::TeacherCourseView::âûéòèToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
     CurrentApplicationContext::ShowOnlyTeacherModeWin();
+    return System::Void();
+}
+
+System::Void CourseWork::TeacherCourseView::TestsDataGridView_CellDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e)
+{
+    Course^ CurrentCourse = CurrentApplicationContext::GetCourse();
+    int TestId = Convert::ToInt32(this->TestsDataGridView[0, this->TestsDataGridView->CurrentCell->RowIndex]->Value);
+    Test^ CurrentTest = CurrentCourse->GetTestWithId(TestId);
+    TestView^ TestViewWin = gcnew TestView(CurrentTest);
+    this->Hide();
+    if (TestViewWin->ShowDialog() == System::Windows::Forms::DialogResult::Abort)
+    {
+        CurrentCourse->RemoveTestWithId(TestId);
+        this->TestsDataGridView->Rows->Remove(this->TestsDataGridView->Rows[this->TestsDataGridView->CurrentCell->RowIndex]);
+    }
+    else
+        this->TestsDataGridView[1, this->TestsDataGridView->CurrentCell->RowIndex]->Value = CurrentTest->GetTestName();
+    this->Show();
     return System::Void();
 }

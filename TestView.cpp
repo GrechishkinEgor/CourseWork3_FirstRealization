@@ -55,19 +55,12 @@ System::Void CourseWork::TestView::äîáàâèòüÇàäàíèåToolStripMenuItem_Click(System
 	return System::Void();
 }
 
-System::Void CourseWork::TestView::TasksGridView_MouseDoubleClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e)
+System::Void CourseWork::TestView::TasksGridView_CellDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e)
 {
-	try
-	{
-		int TaskId = Convert::ToInt32(this->TasksGridView[0, this->TasksGridView->CurrentCell->RowIndex]->Value);
-		Task^ CurrentTask = CurrentTest->GetTaskWithId(TaskId);
-		EditChoiceFewAnswer^ EditChoiceFewAnswerWin = gcnew EditChoiceFewAnswer(CurrentTask);
-		if (EditChoiceFewAnswerWin->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-			TasksGridView[1, this->TasksGridView->CurrentCell->RowIndex]->Value = CurrentTask->GetQuestion();
-	}
-	catch (System::NullReferenceException^ e)
-	{
-
-	}
+	int TaskId = Convert::ToInt32(this->TasksGridView[0, this->TasksGridView->CurrentCell->RowIndex]->Value);
+	Task^ CurrentTask = CurrentTest->GetTaskWithId(TaskId);
+	EditChoiceFewAnswer^ EditChoiceFewAnswerWin = gcnew EditChoiceFewAnswer(CurrentTask);
+	if (EditChoiceFewAnswerWin->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		TasksGridView[1, this->TasksGridView->CurrentCell->RowIndex]->Value = CurrentTask->GetQuestion();
 	return System::Void();
 }

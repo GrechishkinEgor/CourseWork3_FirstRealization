@@ -148,7 +148,7 @@ namespace CourseWork {
 			this->TestsDataGridView->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->TestsDataGridView->Size = System::Drawing::Size(688, 340);
 			this->TestsDataGridView->TabIndex = 1;
-			this->TestsDataGridView->MouseDoubleClick += gcnew System::Windows::Forms::MouseEventHandler(this, &TeacherCourseView::TestsDataGridView_MouseDoubleClick);
+			this->TestsDataGridView->CellDoubleClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &TeacherCourseView::TestsDataGridView_CellDoubleClick);
 			// 
 			// ID
 			// 
@@ -188,8 +188,7 @@ private: System::Void TeacherCourseView_FormClosing(System::Object^ sender, Syst
 private: System::Void ñîõğàíèòüToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void ñîõğàíèòüÊàêToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void íîâûéÒåñòToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
-private: System::Void TestsDataGridView_MouseDoubleClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
-
 private: System::Void âûéòèToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void TestsDataGridView_CellDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 };
 }

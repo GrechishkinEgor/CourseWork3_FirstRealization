@@ -145,7 +145,7 @@ namespace CourseWork {
 			this->TasksGridView->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->TasksGridView->Size = System::Drawing::Size(499, 265);
 			this->TasksGridView->TabIndex = 2;
-			this->TasksGridView->MouseDoubleClick += gcnew System::Windows::Forms::MouseEventHandler(this, &TestView::TasksGridView_MouseDoubleClick);
+			this->TasksGridView->CellDoubleClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &TestView::TasksGridView_CellDoubleClick);
 			// 
 			// TaskId
 			// 
@@ -189,6 +189,6 @@ namespace CourseWork {
 private: System::Void Û‰‡ÎËÚ¸ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void TestView_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
 private: System::Void ‰Ó·‡‚ËÚ¸«‡‰‡ÌËÂToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
-private: System::Void TasksGridView_MouseDoubleClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
+private: System::Void TasksGridView_CellDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 };
 }
