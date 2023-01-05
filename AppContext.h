@@ -10,6 +10,7 @@
 #include "CreatingNewTest.h"
 #include "ChangeTeacherPassword.h"
 #include "EditChoiceFewAnswer.h"
+#include "StudentCourseView.h"
 #include "TestView.h"
 
 /*Текущий контекст приложения (ApplicationContext).
@@ -37,6 +38,7 @@ namespace CourseWork
 		static TeacherMode^ TeacherModeWin;
 		static StudentMode^ StudentModeWin;
 		static TeacherCourseView^ TeacherCourseViewWin;
+		static StudentCourseView^ StudentCourseViewWin;
 
 		/*Открытый в приложении курс*/
 		static Course^ CurrentCourse;
@@ -57,6 +59,7 @@ namespace CourseWork
 		static void ShowOnlyTeacherModeWin();
 		static void ShowOnlyStudentModeWin();
 		static void ShowOnlyTeacherCourseViewWin();
+		static void ShowOnlyStudentCourseViewWin();
 
 		/* 
 		*  Следующая группа методов отвечает за работу с курсом.

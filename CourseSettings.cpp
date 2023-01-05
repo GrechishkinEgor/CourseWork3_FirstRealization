@@ -34,6 +34,7 @@ System::Void CourseWork::CourseSettings::FinishDevelopmentButton_Click(System::O
 		== System::Windows::Forms::DialogResult::OK)
 	{
 		CurrentApplicationContext::GetCourse()->FinishDevelopment();
+		CurrentApplicationContext::ShowOnlyTeacherCourseViewWin();
 		this->Close();
 	}
 	return System::Void();

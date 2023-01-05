@@ -7,6 +7,13 @@ CourseWork::TeacherCourseView::TeacherCourseView(void)
     array<Test^>^ TestList = CurrentCourse->GetListOfTests();
     for (int i = 0; i < TestList->Length; i++)
         this->TestsDataGridView->Rows->Add(TestList[i]->GetId(), TestList[i]->GetTestName());
+
+    if (!CurrentApplicationContext::GetCourse()->IsInDevelopment())
+    {
+        ñîõğàíèòüToolStripMenuItem->Enabled = false;
+        //ñîõğàíèòüÊàêToolStripMenuItem->Enabled = false;
+        íîâûéÒåñòToolStripMenuItem->Enabled = false;
+    }
     return;
 }
 
@@ -75,5 +82,11 @@ System::Void CourseWork::TeacherCourseView::TestsDataGridView_MouseDoubleClick(S
 
     }
     this->Show();
+    return System::Void();
+}
+
+System::Void CourseWork::TeacherCourseView::âûéòèToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+{
+    CurrentApplicationContext::ShowOnlyTeacherModeWin();
     return System::Void();
 }

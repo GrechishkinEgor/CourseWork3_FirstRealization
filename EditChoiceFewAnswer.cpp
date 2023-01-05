@@ -14,17 +14,28 @@ CourseWork::EditChoiceFewAnswer::EditChoiceFewAnswer(CourseWork::Task^ CurrentTa
     ExecutionTimeTextBox->Text = Convert::ToString(CurrentTask->GetExecutionTime());
     TotalMarkTextBox->Text = Convert::ToString(CurrentTask->GetMaxMark());
     array<String^>^ Answers = CurrentTask->GetAnswers();
-    array<bool>^ NumsOfRightAnswers = CurrentTask->GetNumsOfRightAnswers();
-    
+    array<bool>^ NumsOfRightAnswers = CurrentTask->GetNumsOfRightAnswers(); 
     for (int i = 0; i < Answers->Length; i++)
         AnswersGridView->Rows->Add(Answers[i], NumsOfRightAnswers[i] ? "Правильный" : "");
-       
-        
+           
+    if (!CurrentApplicationContext::GetCourse()->IsInDevelopment())
+    {
+        QuestionTextBox->Enabled = false;
+        RandomOrderOfAnswersCheckBox->Enabled = false;
+        TotalMarkTextBox->Enabled = false;
+        ExecutionTimeTextBox->Enabled = false;
+        AnswersGridView->Enabled = false;
+    }
+
     return;
 }
 
 System::Void CourseWork::EditChoiceFewAnswer::OKButton_Click(System::Object^ sender, System::EventArgs^ e)
 {
+    if (!CurrentApplicationContext::GetCourse()->IsInDevelopment())
+        this->Close();
+
+    
     if (QuestionTextBox->Text == "")
     {
         MessageBox::Show("Не указан вопрос.", "Вопрос", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);

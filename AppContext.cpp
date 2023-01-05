@@ -11,6 +11,7 @@ CourseWork::CurrentApplicationContext::CurrentApplicationContext()
     TeacherModeWin = gcnew TeacherMode;
     StudentModeWin = gcnew StudentMode;
     TeacherCourseViewWin = gcnew TeacherCourseView;
+    StudentCourseViewWin = gcnew StudentCourseView;
 
     ChoiceModeWin->Show();
     return;
@@ -22,6 +23,7 @@ void CourseWork::CurrentApplicationContext::HideAllForms()
     TeacherModeWin->Hide();
     StudentModeWin->Hide();
     TeacherCourseViewWin->Hide();
+    StudentCourseViewWin->Hide();
     return;
 }
 
@@ -51,6 +53,14 @@ void CourseWork::CurrentApplicationContext::ShowOnlyTeacherCourseViewWin()
     HideAllForms();
     TeacherCourseViewWin = gcnew TeacherCourseView;
     TeacherCourseViewWin->Show();
+    return;
+}
+
+void CourseWork::CurrentApplicationContext::ShowOnlyStudentCourseViewWin()
+{
+    HideAllForms();
+    StudentCourseViewWin = gcnew StudentCourseView;
+    StudentCourseViewWin->Show();
     return;
 }
 

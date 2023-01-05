@@ -42,6 +42,7 @@ namespace CourseWork {
 	private: System::Windows::Forms::DataGridView^ TestsDataGridView;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ID;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ TestName;
+	private: System::Windows::Forms::ToolStripMenuItem^ âûéòèToolStripMenuItem;
 
 
 
@@ -65,6 +66,7 @@ namespace CourseWork {
 			this->ñîõğàíèòüÊàêToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->íîâûéÒåñòToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->íàñòğîéêèÊóğñàToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->âûéòèToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->SaveCourseDialog = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->TestsDataGridView = (gcnew System::Windows::Forms::DataGridView());
 			this->ID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -75,9 +77,9 @@ namespace CourseWork {
 			// 
 			// GeneralMenuStrip
 			// 
-			this->GeneralMenuStrip->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
+			this->GeneralMenuStrip->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(5) {
 				this->ñîõğàíèòüToolStripMenuItem,
-					this->ñîõğàíèòüÊàêToolStripMenuItem, this->íîâûéÒåñòToolStripMenuItem, this->íàñòğîéêèÊóğñàToolStripMenuItem
+					this->ñîõğàíèòüÊàêToolStripMenuItem, this->íîâûéÒåñòToolStripMenuItem, this->íàñòğîéêèÊóğñàToolStripMenuItem, this->âûéòèToolStripMenuItem
 			});
 			this->GeneralMenuStrip->Location = System::Drawing::Point(0, 0);
 			this->GeneralMenuStrip->Name = L"GeneralMenuStrip";
@@ -112,6 +114,13 @@ namespace CourseWork {
 			this->íàñòğîéêèÊóğñàToolStripMenuItem->Size = System::Drawing::Size(113, 20);
 			this->íàñòğîéêèÊóğñàToolStripMenuItem->Text = L"Íàñòğîéêè êóğñà";
 			this->íàñòğîéêèÊóğñàToolStripMenuItem->Click += gcnew System::EventHandler(this, &TeacherCourseView::íàñòğîéêèÊóğñàToolStripMenuItem_Click);
+			// 
+			// âûéòèToolStripMenuItem
+			// 
+			this->âûéòèToolStripMenuItem->Name = L"âûéòèToolStripMenuItem";
+			this->âûéòèToolStripMenuItem->Size = System::Drawing::Size(103, 20);
+			this->âûéòèToolStripMenuItem->Text = L"Âûéòè èç êóğñà";
+			this->âûéòèToolStripMenuItem->Click += gcnew System::EventHandler(this, &TeacherCourseView::âûéòèToolStripMenuItem_Click);
 			// 
 			// SaveCourseDialog
 			// 
@@ -181,5 +190,6 @@ private: System::Void ñîõğàíèòüÊàêToolStripMenuItem_Click(System::Object^ sender
 private: System::Void íîâûéÒåñòToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void TestsDataGridView_MouseDoubleClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
 
+private: System::Void âûéòèToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

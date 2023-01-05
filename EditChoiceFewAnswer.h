@@ -52,21 +52,6 @@ namespace CourseWork {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Answer;
 	private: System::Windows::Forms::DataGridViewButtonColumn^ IsRight;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.

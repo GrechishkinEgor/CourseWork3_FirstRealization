@@ -41,6 +41,8 @@ namespace CourseWork {
 	private: System::Windows::Forms::Label^ InfoLabel;
 	private: System::Windows::Forms::Button^ OpenCourseButton;
 	private: System::Windows::Forms::Button^ ReturnToChoiceModeButton;
+	private: System::Windows::Forms::OpenFileDialog^ OpenCourseDialog;
+
 	protected:
 
 	private:
@@ -59,6 +61,7 @@ namespace CourseWork {
 			this->InfoLabel = (gcnew System::Windows::Forms::Label());
 			this->OpenCourseButton = (gcnew System::Windows::Forms::Button());
 			this->ReturnToChoiceModeButton = (gcnew System::Windows::Forms::Button());
+			this->OpenCourseDialog = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->SuspendLayout();
 			// 
 			// InfoLabel
@@ -82,6 +85,7 @@ namespace CourseWork {
 			this->OpenCourseButton->TabIndex = 5;
 			this->OpenCourseButton->Text = L"Открыть курс";
 			this->OpenCourseButton->UseVisualStyleBackColor = true;
+			this->OpenCourseButton->Click += gcnew System::EventHandler(this, &StudentMode::OpenCourseButton_Click);
 			// 
 			// ReturnToChoiceModeButton
 			// 
@@ -94,6 +98,10 @@ namespace CourseWork {
 			this->ReturnToChoiceModeButton->Text = L"Вернуться";
 			this->ReturnToChoiceModeButton->UseVisualStyleBackColor = true;
 			this->ReturnToChoiceModeButton->Click += gcnew System::EventHandler(this, &StudentMode::ReturnToChoiceModeButton_Click);
+			// 
+			// OpenCourseDialog
+			// 
+			this->OpenCourseDialog->Filter = L"Курсы|*.course";
 			// 
 			// StudentMode
 			// 
@@ -115,5 +123,6 @@ namespace CourseWork {
 #pragma endregion
 	private: System::Void ReturnToChoiceModeButton_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void StudentMode_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
+	private: System::Void OpenCourseButton_Click(System::Object^ sender, System::EventArgs^ e);
 	};
 }

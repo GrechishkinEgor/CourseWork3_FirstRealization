@@ -8,6 +8,14 @@ CourseWork::TestView::TestView(Test^ CurrentTest)
 	array<Task^>^ TasksList = CurrentTest->GetTasksList();
 	for (int i = 0; i < TasksList->Length; i++)
 		TasksGridView->Rows->Add(TasksList[i]->GetId(), TasksList[i]->GetQuestion());
+
+	if (!CurrentApplicationContext::GetCourse()->IsInDevelopment())
+	{
+		TestNameTextBox->Enabled = false;
+		äîáàâèòüÇàäàíèåToolStripMenuItem->Enabled = false;
+		óäàëèòüToolStripMenuItem->Enabled = false;
+	}
+		
 	return;
 }
 
