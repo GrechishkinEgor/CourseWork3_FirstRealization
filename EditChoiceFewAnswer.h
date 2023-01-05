@@ -50,7 +50,18 @@ namespace CourseWork {
 
 	private: System::Windows::Forms::Label^ ExecutionTimeLabel;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Answer;
-	private: System::Windows::Forms::DataGridViewCheckBoxColumn^ RightAnswerFlag;
+	private: System::Windows::Forms::DataGridViewButtonColumn^ IsRight;
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -79,7 +90,7 @@ namespace CourseWork {
 			this->OKButton = (gcnew System::Windows::Forms::Button());
 			this->AnswersGridView = (gcnew System::Windows::Forms::DataGridView());
 			this->Answer = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->RightAnswerFlag = (gcnew System::Windows::Forms::DataGridViewCheckBoxColumn());
+			this->IsRight = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
 			this->QuestionPanel->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->AnswersGridView))->BeginInit();
 			this->SuspendLayout();
@@ -182,12 +193,15 @@ namespace CourseWork {
 			this->AnswersGridView->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->AnswersGridView->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(2) {
 				this->Answer,
-					this->RightAnswerFlag
+					this->IsRight
 			});
+			this->AnswersGridView->EditMode = System::Windows::Forms::DataGridViewEditMode::EditOnEnter;
 			this->AnswersGridView->Location = System::Drawing::Point(0, 143);
+			this->AnswersGridView->MultiSelect = false;
 			this->AnswersGridView->Name = L"AnswersGridView";
 			this->AnswersGridView->Size = System::Drawing::Size(484, 164);
 			this->AnswersGridView->TabIndex = 2;
+			this->AnswersGridView->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &EditChoiceFewAnswer::AnswersGridView_CellClick);
 			// 
 			// Answer
 			// 
@@ -195,15 +209,13 @@ namespace CourseWork {
 			this->Answer->HeaderText = L"Ответ";
 			this->Answer->Name = L"Answer";
 			// 
-			// RightAnswerFlag
+			// IsRight
 			// 
-			this->RightAnswerFlag->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::ColumnHeader;
-			this->RightAnswerFlag->FalseValue = L"Wrong";
-			this->RightAnswerFlag->HeaderText = L"Правильный ответ";
-			this->RightAnswerFlag->IndeterminateValue = L"Wrong";
-			this->RightAnswerFlag->Name = L"RightAnswerFlag";
-			this->RightAnswerFlag->TrueValue = L"Right";
-			this->RightAnswerFlag->Width = 97;
+			this->IsRight->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::AllCells;
+			this->IsRight->HeaderText = L"Правильность";
+			this->IsRight->Name = L"IsRight";
+			this->IsRight->Text = L"Неправильный";
+			this->IsRight->Width = 86;
 			// 
 			// EditChoiceFewAnswer
 			// 
@@ -226,5 +238,6 @@ namespace CourseWork {
 #pragma endregion
 		Task^ CurrentTask;
 private: System::Void OKButton_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void AnswersGridView_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 };
 }

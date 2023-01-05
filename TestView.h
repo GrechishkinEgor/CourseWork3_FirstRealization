@@ -42,7 +42,9 @@ namespace CourseWork {
 	private: System::Windows::Forms::ToolStripMenuItem^ óäàëèòüToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ äîáàâèòüÇàäàíèåToolStripMenuItem;
 	private: System::Windows::Forms::DataGridView^ TasksGridView;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ TaskId;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ TasksList;
+
 
 	private:
 		/// <summary>
@@ -64,6 +66,7 @@ namespace CourseWork {
 			this->äîáàâèòüÇàäàíèåToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->óäàëèòüToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->TasksGridView = (gcnew System::Windows::Forms::DataGridView());
+			this->TaskId = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->TasksList = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->InfoPanel->SuspendLayout();
 			this->GeneralMenuStrip->SuspendLayout();
@@ -130,7 +133,10 @@ namespace CourseWork {
 			this->TasksGridView->AllowUserToDeleteRows = false;
 			this->TasksGridView->BackgroundColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->TasksGridView->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->TasksGridView->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->TasksList });
+			this->TasksGridView->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(2) {
+				this->TaskId,
+					this->TasksList
+			});
 			this->TasksGridView->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->TasksGridView->Location = System::Drawing::Point(0, 60);
 			this->TasksGridView->MultiSelect = false;
@@ -139,6 +145,13 @@ namespace CourseWork {
 			this->TasksGridView->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->TasksGridView->Size = System::Drawing::Size(499, 265);
 			this->TasksGridView->TabIndex = 2;
+			this->TasksGridView->MouseDoubleClick += gcnew System::Windows::Forms::MouseEventHandler(this, &TestView::TasksGridView_MouseDoubleClick);
+			// 
+			// TaskId
+			// 
+			this->TaskId->HeaderText = L"Id";
+			this->TaskId->Name = L"TaskId";
+			this->TaskId->ReadOnly = true;
 			// 
 			// TasksList
 			// 
@@ -176,5 +189,6 @@ namespace CourseWork {
 private: System::Void óäàëèòüToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void TestView_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
 private: System::Void äîáàâèòüÇàäàíèåToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void TasksGridView_MouseDoubleClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e);
 };
 }

@@ -12,6 +12,7 @@ namespace CourseWork {
 		int ExecutionTime;
 		int Id;
 		bool AnswersRandomOrder;
+		array<bool>^ IsRightAnswer;
 
 	public:
 		Task();
@@ -23,13 +24,16 @@ namespace CourseWork {
 		int GetExecutionTime();
 		int GetId();
 		bool IsAnswersRandomOrder();
+		array<bool>^ GetNumsOfRightAnswers();
 
 		void SetQuestion(String^ Question);
 		void SetMaxMark(int Mark);
 		void SetExecutionTime(int Time);
 		void SetId(int Id);
 		void SetAnswersRandomOrder(bool Random);
-		void AddNewAnswer(String^ Answer);
+		void AddNewAnswer(String^ Answer, bool IsRight);
+		void SetFlagOfRightAnswer(int IndexOfAnswer, bool IsRight);
+		void ClearAnswers();
 
 		void ReadFromFile(BinaryReader^ Reader);
 		void WriteInFile(BinaryWriter^ Writer);

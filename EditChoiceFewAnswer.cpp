@@ -14,8 +14,12 @@ CourseWork::EditChoiceFewAnswer::EditChoiceFewAnswer(CourseWork::Task^ CurrentTa
     ExecutionTimeTextBox->Text = Convert::ToString(CurrentTask->GetExecutionTime());
     TotalMarkTextBox->Text = Convert::ToString(CurrentTask->GetMaxMark());
     array<String^>^ Answers = CurrentTask->GetAnswers();
-    for (int i = 0; Answers->Length; i++)
-        AnswersGridView->Rows->Add(Answers[i]);
+    array<bool>^ NumsOfRightAnswers = CurrentTask->GetNumsOfRightAnswers();
+    
+    for (int i = 0; i < Answers->Length; i++)
+        AnswersGridView->Rows->Add(Answers[i], NumsOfRightAnswers[i] ? "Правильный" : "");
+       
+        
     return;
 }
 
@@ -72,7 +76,8 @@ System::Void CourseWork::EditChoiceFewAnswer::OKButton_Click(System::Object^ sen
             MessageBox::Show("Пустые варианты ответов не допускаются.", "Ответы", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
             return System::Void();
         }
-        if (AnswersGridView[1, i]->Value == "Right")
+        DataGridViewButtonCell^ CurrentCell = (DataGridViewButtonCell^)AnswersGridView->Rows[i]->Cells[1];
+        if (CurrentCell->Value == "Правильный")
             FlagRightAnswers = true;
     }
     if (!FlagRightAnswers)
@@ -84,12 +89,25 @@ System::Void CourseWork::EditChoiceFewAnswer::OKButton_Click(System::Object^ sen
 
     CurrentTask->SetQuestion(QuestionTextBox->Text);
     CurrentTask->SetExecutionTime(Convert::ToInt32(ExecutionTimeTextBox->Text));
-    CurrentTask->SetExecutionTime(Convert::ToInt32(ExecutionTimeTextBox->Text));
-    for (int i = 0; i < AnswersGridView->Rows->Count; i++)
-        CurrentTask->AddNewAnswer(Convert::ToString(AnswersGridView[0, i]->Value));
+    CurrentTask->ClearAnswers();
+    for (int i = 0; i < AnswersGridView->Rows->Count - 1; i++)
+        CurrentTask->AddNewAnswer(Convert::ToString(AnswersGridView[0, i]->Value), AnswersGridView->Rows[i]->Cells[1]->Value == "Правильный");
     CurrentTask->SetAnswersRandomOrder(RandomOrderOfAnswersCheckBox->CheckState == CheckState::Checked);
+    CurrentTask->SetMaxMark(Convert::ToInt32(TotalMarkTextBox->Text));
     this->DialogResult = System::Windows::Forms::DialogResult::OK;
     this->Close();
     
+    return System::Void();
+}
+
+System::Void CourseWork::EditChoiceFewAnswer::AnswersGridView_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e)
+{
+    if (AnswersGridView->CurrentCell->ColumnIndex == 1)
+    {
+        if (AnswersGridView->CurrentCell->Value == "Правильный")
+            AnswersGridView->CurrentCell->Value = "";
+        else
+            AnswersGridView->CurrentCell->Value = "Правильный";
+    }
     return System::Void();
 }
