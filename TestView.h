@@ -42,6 +42,9 @@ namespace CourseWork {
 	private: System::Windows::Forms::ToolStripMenuItem^ удалитьToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ добавитьЗаданиеToolStripMenuItem;
 	private: System::Windows::Forms::DataGridView^ TasksGridView;
+
+
+	private: System::Windows::Forms::CheckBox^ RandomOrderCheckBox;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ TaskId;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ TasksList;
 
@@ -60,6 +63,7 @@ namespace CourseWork {
 		void InitializeComponent(void)
 		{
 			this->InfoPanel = (gcnew System::Windows::Forms::Panel());
+			this->RandomOrderCheckBox = (gcnew System::Windows::Forms::CheckBox());
 			this->TestNameTextBox = (gcnew System::Windows::Forms::TextBox());
 			this->TestNameLabel = (gcnew System::Windows::Forms::Label());
 			this->GeneralMenuStrip = (gcnew System::Windows::Forms::MenuStrip());
@@ -76,13 +80,25 @@ namespace CourseWork {
 			// InfoPanel
 			// 
 			this->InfoPanel->BackColor = System::Drawing::SystemColors::Info;
+			this->InfoPanel->Controls->Add(this->RandomOrderCheckBox);
 			this->InfoPanel->Controls->Add(this->TestNameTextBox);
 			this->InfoPanel->Controls->Add(this->TestNameLabel);
 			this->InfoPanel->Dock = System::Windows::Forms::DockStyle::Top;
 			this->InfoPanel->Location = System::Drawing::Point(0, 24);
 			this->InfoPanel->Name = L"InfoPanel";
-			this->InfoPanel->Size = System::Drawing::Size(499, 36);
+			this->InfoPanel->Size = System::Drawing::Size(499, 62);
 			this->InfoPanel->TabIndex = 0;
+			// 
+			// RandomOrderCheckBox
+			// 
+			this->RandomOrderCheckBox->AutoSize = true;
+			this->RandomOrderCheckBox->Location = System::Drawing::Point(12, 35);
+			this->RandomOrderCheckBox->Name = L"RandomOrderCheckBox";
+			this->RandomOrderCheckBox->Size = System::Drawing::Size(263, 17);
+			this->RandomOrderCheckBox->TabIndex = 2;
+			this->RandomOrderCheckBox->Text = L"Выдавать задания теста в случайном порядке";
+			this->RandomOrderCheckBox->UseVisualStyleBackColor = true;
+			this->RandomOrderCheckBox->CheckStateChanged += gcnew System::EventHandler(this, &TestView::RandomOrderCheckBox_CheckStateChanged);
 			// 
 			// TestNameTextBox
 			// 
@@ -138,12 +154,12 @@ namespace CourseWork {
 					this->TasksList
 			});
 			this->TasksGridView->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->TasksGridView->Location = System::Drawing::Point(0, 60);
+			this->TasksGridView->Location = System::Drawing::Point(0, 86);
 			this->TasksGridView->MultiSelect = false;
 			this->TasksGridView->Name = L"TasksGridView";
 			this->TasksGridView->ReadOnly = true;
 			this->TasksGridView->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->TasksGridView->Size = System::Drawing::Size(499, 265);
+			this->TasksGridView->Size = System::Drawing::Size(499, 239);
 			this->TasksGridView->TabIndex = 2;
 			this->TasksGridView->CellDoubleClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &TestView::TasksGridView_CellDoubleClick);
 			// 
@@ -152,6 +168,7 @@ namespace CourseWork {
 			this->TaskId->HeaderText = L"Id";
 			this->TaskId->Name = L"TaskId";
 			this->TaskId->ReadOnly = true;
+			this->TaskId->Visible = false;
 			// 
 			// TasksList
 			// 
@@ -190,5 +207,6 @@ private: System::Void удалитьToolStripMenuItem_Click(System::Object^ sender, Sys
 private: System::Void TestView_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
 private: System::Void добавитьЗаданиеToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void TasksGridView_CellDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
+private: System::Void RandomOrderCheckBox_CheckStateChanged(System::Object^ sender, System::EventArgs^ e);
 };
 }

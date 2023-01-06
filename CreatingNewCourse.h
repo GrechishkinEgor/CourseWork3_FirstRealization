@@ -151,7 +151,7 @@ namespace CourseWork {
 			// 
 			// OKButton
 			// 
-			this->OKButton->Location = System::Drawing::Point(135, 275);
+			this->OKButton->Location = System::Drawing::Point(135, 189);
 			this->OKButton->Name = L"OKButton";
 			this->OKButton->Size = System::Drawing::Size(121, 21);
 			this->OKButton->TabIndex = 7;
@@ -161,7 +161,7 @@ namespace CourseWork {
 			// 
 			// CancelButton
 			// 
-			this->CancelButton->Location = System::Drawing::Point(262, 275);
+			this->CancelButton->Location = System::Drawing::Point(262, 189);
 			this->CancelButton->Name = L"CancelButton";
 			this->CancelButton->Size = System::Drawing::Size(121, 21);
 			this->CancelButton->TabIndex = 8;
@@ -173,7 +173,7 @@ namespace CourseWork {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(502, 325);
+			this->ClientSize = System::Drawing::Size(502, 228);
 			this->Controls->Add(this->CancelButton);
 			this->Controls->Add(this->OKButton);
 			this->Controls->Add(this->GeneralGroupBox);

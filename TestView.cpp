@@ -8,12 +8,14 @@ CourseWork::TestView::TestView(Test^ CurrentTest)
 	array<Task^>^ TasksList = CurrentTest->GetTasksList();
 	for (int i = 0; i < TasksList->Length; i++)
 		TasksGridView->Rows->Add(TasksList[i]->GetId(), TasksList[i]->GetQuestion());
+	RandomOrderCheckBox->CheckState = CurrentTest->IsTaskInRandomOrder() ? CheckState::Checked : CheckState::Unchecked;
 
 	if (!CurrentApplicationContext::GetCourse()->IsInDevelopment())
 	{
 		TestNameTextBox->Enabled = false;
 		äîáàâèòüÇàäàíèåToolStripMenuItem->Enabled = false;
 		óäàëèòüToolStripMenuItem->Enabled = false;
+		RandomOrderCheckBox->Enabled = false;
 	}
 		
 	return;
@@ -62,5 +64,11 @@ System::Void CourseWork::TestView::TasksGridView_CellDoubleClick(System::Object^
 	EditChoiceFewAnswer^ EditChoiceFewAnswerWin = gcnew EditChoiceFewAnswer(CurrentTask);
 	if (EditChoiceFewAnswerWin->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		TasksGridView[1, this->TasksGridView->CurrentCell->RowIndex]->Value = CurrentTask->GetQuestion();
+	return System::Void();
+}
+
+System::Void CourseWork::TestView::RandomOrderCheckBox_CheckStateChanged(System::Object^ sender, System::EventArgs^ e)
+{
+	CurrentTest->SetRandomOrderFlag(RandomOrderCheckBox->CheckState == CheckState::Checked);
 	return System::Void();
 }

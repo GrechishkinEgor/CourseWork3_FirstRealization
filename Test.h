@@ -12,6 +12,7 @@ namespace CourseWork
 		int Id;
 		array<Task^>^ TasksList;
 		int IdLastTask;
+		bool RandomOrder;
 	public:
 		Test();
 		Test(String^ TestName);
@@ -19,14 +20,16 @@ namespace CourseWork
 
 		void SetTestName(String^ Name);
 		void SetId(int Id);
-		void AddNewTask(Task^ NewTask);	//Протестировать
+		void AddNewTask(Task^ NewTask);
+		void SetRandomOrderFlag(bool IsRandomOrder);
 
 		String^ GetTestName();
 		int GetId();
-		Task^ GetTaskWithId(int Id);	//Протестировать
+		Task^ GetTaskWithId(int Id);
 		array<Task^>^ GetTasksList();
+		bool IsTaskInRandomOrder();
 
-		bool RemoveTaskWithId(int Id);	//Протестировать
+		bool RemoveTaskWithId(int Id);
 
 		void WriteInFile(BinaryWriter^ Writer);
 		void ReadFromFile(BinaryReader^ Reader);

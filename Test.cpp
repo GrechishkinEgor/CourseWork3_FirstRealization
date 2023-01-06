@@ -6,6 +6,7 @@ CourseWork::Test::Test()
     Id = 0;
     TasksList = gcnew array<Task^>(0);
     IdLastTask = 0;
+    RandomOrder = false;
 }
 
 CourseWork::Test::Test(String^ TestName) : Test()
@@ -39,6 +40,12 @@ void CourseWork::Test::AddNewTask(Task^ NewTask)
     TasksList[TasksList->Length - 1] = NewTask;
 }
 
+void CourseWork::Test::SetRandomOrderFlag(bool IsRandomOrder)
+{
+    RandomOrder = IsRandomOrder;
+    return;
+}
+
 System::String^ CourseWork::Test::GetTestName()
 {
     return TestName;
@@ -62,6 +69,11 @@ array<CourseWork::Task^>^ CourseWork::Test::GetTasksList()
     return TasksList;
 }
 
+bool CourseWork::Test::IsTaskInRandomOrder()
+{
+    return RandomOrder;
+}
+
 bool CourseWork::Test::RemoveTaskWithId(int Id)
 {
     for (int i = 0; i < TasksList->Length; i++)
@@ -83,6 +95,7 @@ void CourseWork::Test::WriteInFile(BinaryWriter^ Writer)
     for (int i = 0; i < TasksList->Length; i++)
         TasksList[i]->WriteInFile(Writer);
     Writer->Write(IdLastTask);
+    Writer->Write(RandomOrder);
     return;
 }
 
@@ -94,5 +107,6 @@ void CourseWork::Test::ReadFromFile(BinaryReader^ Reader)
     for (int i = 0; i < TasksList->Length; i++)
         TasksList[i] = gcnew Task(Reader);
     IdLastTask = Reader->ReadInt32();
+    RandomOrder = Reader->ReadBoolean();
     return;
 }

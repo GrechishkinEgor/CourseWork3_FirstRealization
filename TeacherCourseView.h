@@ -40,9 +40,11 @@ namespace CourseWork {
 	private: System::Windows::Forms::ToolStripMenuItem^ íàñòðîéêèÊóðñàToolStripMenuItem;
 	private: System::Windows::Forms::SaveFileDialog^ SaveCourseDialog;
 	private: System::Windows::Forms::DataGridView^ TestsDataGridView;
+
+
+	private: System::Windows::Forms::ToolStripMenuItem^ âûéòèToolStripMenuItem;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ID;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ TestName;
-	private: System::Windows::Forms::ToolStripMenuItem^ âûéòèToolStripMenuItem;
 
 
 
@@ -155,6 +157,7 @@ namespace CourseWork {
 			this->ID->HeaderText = L"ID";
 			this->ID->Name = L"ID";
 			this->ID->ReadOnly = true;
+			this->ID->Visible = false;
 			// 
 			// TestName
 			// 

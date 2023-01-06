@@ -43,6 +43,7 @@ namespace CourseWork {
 	private: System::Windows::Forms::TextBox^ TestNameTextBox;
 	private: System::Windows::Forms::Label^ TestNameLabel;
 	private: System::Windows::Forms::Button^ OKButton;
+	private: System::Windows::Forms::CheckBox^ RandomOrderCheckBox;
 
 	private:
 		/// <summary>
@@ -61,19 +62,21 @@ namespace CourseWork {
 			this->TestNameTextBox = (gcnew System::Windows::Forms::TextBox());
 			this->TestNameLabel = (gcnew System::Windows::Forms::Label());
 			this->OKButton = (gcnew System::Windows::Forms::Button());
+			this->RandomOrderCheckBox = (gcnew System::Windows::Forms::CheckBox());
 			this->GeneralGroupBox->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// GeneralGroupBox
 			// 
+			this->GeneralGroupBox->Controls->Add(this->RandomOrderCheckBox);
 			this->GeneralGroupBox->Controls->Add(this->TestNameTextBox);
 			this->GeneralGroupBox->Controls->Add(this->TestNameLabel);
 			this->GeneralGroupBox->Location = System::Drawing::Point(12, 12);
 			this->GeneralGroupBox->Name = L"GeneralGroupBox";
-			this->GeneralGroupBox->Size = System::Drawing::Size(332, 73);
+			this->GeneralGroupBox->Size = System::Drawing::Size(332, 84);
 			this->GeneralGroupBox->TabIndex = 0;
 			this->GeneralGroupBox->TabStop = false;
-			this->GeneralGroupBox->Text = L"Основное";
+			this->GeneralGroupBox->Text = L"Параметры теста";
 			// 
 			// TestNameTextBox
 			// 
@@ -94,7 +97,7 @@ namespace CourseWork {
 			// 
 			// OKButton
 			// 
-			this->OKButton->Location = System::Drawing::Point(142, 206);
+			this->OKButton->Location = System::Drawing::Point(146, 125);
 			this->OKButton->Name = L"OKButton";
 			this->OKButton->Size = System::Drawing::Size(82, 24);
 			this->OKButton->TabIndex = 1;
@@ -102,11 +105,21 @@ namespace CourseWork {
 			this->OKButton->UseVisualStyleBackColor = true;
 			this->OKButton->Click += gcnew System::EventHandler(this, &CreatingNewTest::OKButton_Click);
 			// 
+			// RandomOrderCheckBox
+			// 
+			this->RandomOrderCheckBox->AutoSize = true;
+			this->RandomOrderCheckBox->Location = System::Drawing::Point(9, 51);
+			this->RandomOrderCheckBox->Name = L"RandomOrderCheckBox";
+			this->RandomOrderCheckBox->Size = System::Drawing::Size(232, 17);
+			this->RandomOrderCheckBox->TabIndex = 2;
+			this->RandomOrderCheckBox->Text = L"Выдавать задания в случайном порядке";
+			this->RandomOrderCheckBox->UseVisualStyleBackColor = true;
+			// 
 			// CreatingNewTest
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(356, 263);
+			this->ClientSize = System::Drawing::Size(356, 161);
 			this->Controls->Add(this->OKButton);
 			this->Controls->Add(this->GeneralGroupBox);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedToolWindow;
