@@ -6,6 +6,7 @@ CourseWork::EditChoiceFewAnswer::EditChoiceFewAnswer(CourseWork::Task^ CurrentTa
 {
     InitializeComponent();
     this->CurrentTask = CurrentTask;
+    OneAnswerCheckBox->CheckState = CurrentTask->IsTaskWithOneRightAnswer() ? CheckState::Checked : CheckState::Unchecked;
     QuestionTextBox->Text = CurrentTask->GetQuestion();
     if (CurrentTask->IsAnswersRandomOrder())
         RandomOrderOfAnswersCheckBox->CheckState = CheckState::Checked;
@@ -115,10 +116,22 @@ System::Void CourseWork::EditChoiceFewAnswer::AnswersGridView_CellClick(System::
 {
     if (AnswersGridView->CurrentCell->ColumnIndex == 1)
     {
+        if (CurrentTask->IsTaskWithOneRightAnswer())
+            for (int i = 0; i < AnswersGridView->Rows->Count; i++)
+                if (i != AnswersGridView->CurrentCell->RowIndex)
+                    AnswersGridView[1, i]->Value = "";
         if (AnswersGridView->CurrentCell->Value == "Правильный")
             AnswersGridView->CurrentCell->Value = "";
         else
             AnswersGridView->CurrentCell->Value = "Правильный";
     }
+    return System::Void();
+}
+
+System::Void CourseWork::EditChoiceFewAnswer::OneAnswerCheckBox_CheckStateChanged(System::Object^ sender, System::EventArgs^ e)
+{
+    CurrentTask->SetFlagOfOneRightAnswer(OneAnswerCheckBox->CheckState == CheckState::Checked);
+    for (int i = 0; i < AnswersGridView->Rows->Count; i++)
+        AnswersGridView[1, i]->Value = "";
     return System::Void();
 }

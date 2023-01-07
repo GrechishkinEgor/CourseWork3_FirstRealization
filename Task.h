@@ -23,6 +23,7 @@ namespace CourseWork {
 		void AddNewAnswer(String^ Answer, bool IsRight);
 		void SetFlagOfRightAnswer(int IndexOfAnswer, bool IsRight);
 		void ClearAnswers();
+		void SetFlagOfOneRightAnswer(bool IsOneRightAnswer);
 		
 		void WriteInFile(BinaryWriter^ Writer) override;
 	};

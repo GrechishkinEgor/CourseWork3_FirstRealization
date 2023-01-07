@@ -14,6 +14,7 @@ void CourseWork::TaskBasic::ReadFromFile(BinaryReader^ Reader)
     MaxMark = Reader->ReadInt32();
     ExecutionTime = Reader->ReadInt32();
     Id = Reader->ReadInt32();
+    IsWithOneRightAnswer = Reader->ReadBoolean();
     return;
 }
 
@@ -28,6 +29,7 @@ void CourseWork::TaskBasic::WriteInFile(BinaryWriter^ Writer)
     Writer->Write(MaxMark);
     Writer->Write(ExecutionTime);
     Writer->Write(Id);
+    Writer->Write(IsWithOneRightAnswer);
     return;
 }
 
@@ -75,6 +77,11 @@ int CourseWork::TaskBasic::GetId()
 array<bool>^ CourseWork::TaskBasic::GetNumsOfRightAnswers()
 {
     return IsRightAnswer;
+}
+
+bool CourseWork::TaskBasic::IsTaskWithOneRightAnswer()
+{
+    return IsWithOneRightAnswer;
 }
 
 

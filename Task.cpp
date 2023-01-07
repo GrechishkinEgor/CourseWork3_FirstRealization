@@ -62,6 +62,12 @@ void CourseWork::Task::ClearAnswers()
     array<String^>::Resize(Answers, 0);
 }
 
+void CourseWork::Task::SetFlagOfOneRightAnswer(bool IsOneRightAnswer)
+{
+    this->IsWithOneRightAnswer = IsOneRightAnswer;
+    return;
+}
+
 void CourseWork::Task::ReadFromFile(BinaryReader^ Reader)
 {
     TaskBasic::ReadFromFile(Reader);

@@ -51,6 +51,7 @@ namespace CourseWork {
 	private: System::Windows::Forms::Label^ ExecutionTimeLabel;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Answer;
 	private: System::Windows::Forms::DataGridViewButtonColumn^ IsRight;
+	private: System::Windows::Forms::CheckBox^ OneAnswerCheckBox;
 
 	private:
 		/// <summary>
@@ -76,6 +77,7 @@ namespace CourseWork {
 			this->AnswersGridView = (gcnew System::Windows::Forms::DataGridView());
 			this->Answer = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->IsRight = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
+			this->OneAnswerCheckBox = (gcnew System::Windows::Forms::CheckBox());
 			this->QuestionPanel->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->AnswersGridView))->BeginInit();
 			this->SuspendLayout();
@@ -83,6 +85,7 @@ namespace CourseWork {
 			// QuestionPanel
 			// 
 			this->QuestionPanel->BackColor = System::Drawing::SystemColors::Info;
+			this->QuestionPanel->Controls->Add(this->OneAnswerCheckBox);
 			this->QuestionPanel->Controls->Add(this->ExecutionTimeTextBox);
 			this->QuestionPanel->Controls->Add(this->ExecutionTimeLabel);
 			this->QuestionPanel->Controls->Add(this->TotalMarkTextBox);
@@ -98,11 +101,13 @@ namespace CourseWork {
 			// ExecutionTimeTextBox
 			// 
 			this->ExecutionTimeTextBox->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->ExecutionTimeTextBox->Enabled = false;
 			this->ExecutionTimeTextBox->Location = System::Drawing::Point(403, 99);
 			this->ExecutionTimeTextBox->MaxLength = 4;
 			this->ExecutionTimeTextBox->Name = L"ExecutionTimeTextBox";
 			this->ExecutionTimeTextBox->Size = System::Drawing::Size(69, 20);
 			this->ExecutionTimeTextBox->TabIndex = 6;
+			this->ExecutionTimeTextBox->Visible = false;
 			// 
 			// ExecutionTimeLabel
 			// 
@@ -113,6 +118,7 @@ namespace CourseWork {
 			this->ExecutionTimeLabel->Size = System::Drawing::Size(165, 13);
 			this->ExecutionTimeLabel->TabIndex = 5;
 			this->ExecutionTimeLabel->Text = L"Ограничение по времени (сек):";
+			this->ExecutionTimeLabel->Visible = false;
 			// 
 			// TotalMarkTextBox
 			// 
@@ -202,6 +208,17 @@ namespace CourseWork {
 			this->IsRight->Text = L"Неправильный";
 			this->IsRight->Width = 86;
 			// 
+			// OneAnswerCheckBox
+			// 
+			this->OneAnswerCheckBox->AutoSize = true;
+			this->OneAnswerCheckBox->Location = System::Drawing::Point(12, 92);
+			this->OneAnswerCheckBox->Name = L"OneAnswerCheckBox";
+			this->OneAnswerCheckBox->Size = System::Drawing::Size(201, 17);
+			this->OneAnswerCheckBox->TabIndex = 7;
+			this->OneAnswerCheckBox->Text = L"Задание с одним верным ответом";
+			this->OneAnswerCheckBox->UseVisualStyleBackColor = true;
+			this->OneAnswerCheckBox->CheckStateChanged += gcnew System::EventHandler(this, &EditChoiceFewAnswer::OneAnswerCheckBox_CheckStateChanged);
+			// 
 			// EditChoiceFewAnswer
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -224,5 +241,6 @@ namespace CourseWork {
 		Task^ CurrentTask;
 private: System::Void OKButton_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void AnswersGridView_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
+private: System::Void OneAnswerCheckBox_CheckStateChanged(System::Object^ sender, System::EventArgs^ e);
 };
 }

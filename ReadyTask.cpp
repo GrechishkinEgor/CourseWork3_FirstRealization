@@ -45,11 +45,16 @@ CourseWork::ReadyTask::ReadyTask(Task^ SomeTask) : TaskBasic()
     }
     else
         for (int i = 0; i < Answers->Length; i++)
+        {
             Answers[i] = String::Copy(SomeTaskAnswers[i]);
+            IsRightAnswer[i] = SomeTaskRightAnswers[i];
+        }
+            
 
     this->ExecutionTime = SomeTask->GetExecutionTime();
     this->MaxMark = SomeTask->GetMaxMark();
     this->Id = SomeTask->GetId();
+    this->IsWithOneRightAnswer = SomeTask->IsTaskWithOneRightAnswer();
     UserAnswer = gcnew array<bool>(SomeTaskAnswers->Length);
     LastUserMark = 0;
     return;
@@ -75,10 +80,26 @@ int CourseWork::ReadyTask::CheckAnswer(array<bool>^ UserAnswer)
 {
     for (int i = 0; i < this->UserAnswer->Length; i++)
         this->UserAnswer[i] = UserAnswer[i];
-    int RightAnswersCount = 0;
-    for (int i = 0; i < this->UserAnswer->Length; i++)
-        if (this->UserAnswer[i] == this->IsRightAnswer[i])
-            RightAnswersCount++;
-    LastUserMark = (int)((double)RightAnswersCount / this->Answers->Length * MaxMark);
+    if (IsWithOneRightAnswer)
+    {
+        for (int i = 0; i < this->Answers->Length; i++)
+            if (this->IsRightAnswer[i])
+            {
+                if (UserAnswer[i])
+                    LastUserMark = MaxMark;
+                else
+                    LastUserMark = 0;
+                break;
+            }
+    }
+    else
+    {
+        int RightAnswersCount = 0;
+        for (int i = 0; i < this->UserAnswer->Length; i++)
+            if (this->UserAnswer[i] == this->IsRightAnswer[i])
+                RightAnswersCount++;
+        LastUserMark = (int)((double)RightAnswersCount / this->Answers->Length * MaxMark);
+    }
+    
     return LastUserMark;
 }

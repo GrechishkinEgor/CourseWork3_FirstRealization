@@ -13,6 +13,7 @@ namespace CourseWork
 		int MaxMark;
 		int ExecutionTime;
 		int Id;
+		bool IsWithOneRightAnswer;
 
 		virtual void ReadFromFile(BinaryReader^ Reader);
 	public:
@@ -25,6 +26,7 @@ namespace CourseWork
 		int GetExecutionTime();
 		int GetId();
 		array<bool>^ GetNumsOfRightAnswers();
+		bool IsTaskWithOneRightAnswer();
 
 		virtual void WriteInFile(BinaryWriter^ Writer);
 	};
