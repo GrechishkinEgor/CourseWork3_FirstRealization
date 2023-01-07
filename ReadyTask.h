@@ -15,6 +15,7 @@ namespace CourseWork
 		ReadyTask(BinaryReader^ Reader);
 
 		int GetLastUserMark();
+		array<bool>^ GetUserAnswer();
 
 		int CheckAnswer(array<bool>^ UserAnswer);
 

@@ -12,6 +12,7 @@
 #include "EditChoiceFewAnswer.h"
 #include "StudentCourseView.h"
 #include "TestView.h"
+#include "StudentTaskView.h"
 
 /*Текущий контекст приложения (ApplicationContext).
 * Все имеющиеся в проекте формы подключаются в этот заголовочный файл.

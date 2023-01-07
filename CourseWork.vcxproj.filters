@@ -78,6 +78,9 @@
     <ClInclude Include="ReadyTask.h">
       <Filter>Бэкэнд</Filter>
     </ClInclude>
+    <ClInclude Include="StudentTaskView.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChoiceMode.cpp">
@@ -141,6 +144,9 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="ReadyTask.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="StudentTaskView.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

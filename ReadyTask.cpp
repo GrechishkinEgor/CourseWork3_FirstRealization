@@ -66,6 +66,11 @@ int CourseWork::ReadyTask::GetLastUserMark()
     return LastUserMark;
 }
 
+array<bool>^ CourseWork::ReadyTask::GetUserAnswer()
+{
+    return UserAnswer;
+}
+
 int CourseWork::ReadyTask::CheckAnswer(array<bool>^ UserAnswer)
 {
     for (int i = 0; i < this->UserAnswer->Length; i++)

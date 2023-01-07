@@ -133,6 +133,7 @@
     <ClCompile Include="ReadyTest.cpp" />
     <ClCompile Include="StudentCourseView.cpp" />
     <ClCompile Include="StudentMode.cpp" />
+    <ClCompile Include="StudentTaskView.cpp" />
     <ClCompile Include="Task.cpp" />
     <ClCompile Include="TaskBasic.cpp" />
     <ClCompile Include="TeacherCourseView.cpp" />
@@ -171,6 +172,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="StudentMode.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="StudentTaskView.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Task.h" />
@@ -214,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StudentMode.resx">
       <DependentUpon>StudentMode.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentTaskView.resx">
+      <DependentUpon>StudentTaskView.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TeacherCourseView.resx">
       <DependentUpon>TeacherCourseView.h</DependentUpon>
