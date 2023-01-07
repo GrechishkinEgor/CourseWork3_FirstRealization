@@ -66,6 +66,18 @@
     <ClInclude Include="StudentCourseView.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="TestBasic.h">
+      <Filter>Бэкэнд</Filter>
+    </ClInclude>
+    <ClInclude Include="ReadyTest.h">
+      <Filter>Бэкэнд</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskBasic.h">
+      <Filter>Бэкэнд</Filter>
+    </ClInclude>
+    <ClInclude Include="ReadyTask.h">
+      <Filter>Бэкэнд</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChoiceMode.cpp">
@@ -117,6 +129,18 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="StudentCourseView.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="TestBasic.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="ReadyTest.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskBasic.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="ReadyTask.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

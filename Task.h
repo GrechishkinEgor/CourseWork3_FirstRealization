@@ -1,30 +1,19 @@
 #pragma once
+#include "TaskBasic.h"
 
 namespace CourseWork {
 	using namespace System;
 	using namespace System::IO;
-	public ref class Task
+	public ref class Task : TaskBasic
 	{
-	private:
-		String^ Question;
-		array<String^>^ Answers;
-		int MaxMark;
-		int ExecutionTime;
-		int Id;
+	protected:
 		bool AnswersRandomOrder;
-		array<bool>^ IsRightAnswer;
-
+		void ReadFromFile(BinaryReader^ Reader) override;
 	public:
 		Task();
 		Task(BinaryReader^ Reader);
 
-		String^ GetQuestion();
-		array<String^>^ GetAnswers();
-		int GetMaxMark();
-		int GetExecutionTime();
-		int GetId();
 		bool IsAnswersRandomOrder();
-		array<bool>^ GetNumsOfRightAnswers();
 
 		void SetQuestion(String^ Question);
 		void SetMaxMark(int Mark);
@@ -34,8 +23,7 @@ namespace CourseWork {
 		void AddNewAnswer(String^ Answer, bool IsRight);
 		void SetFlagOfRightAnswer(int IndexOfAnswer, bool IsRight);
 		void ClearAnswers();
-
-		void ReadFromFile(BinaryReader^ Reader);
-		void WriteInFile(BinaryWriter^ Writer);
+		
+		void WriteInFile(BinaryWriter^ Writer) override;
 	};
 }

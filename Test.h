@@ -1,37 +1,34 @@
 #pragma once
-#include "Task.h"
+#include "TestBasic.h"
 
 namespace CourseWork
 {
 	using namespace System;
 	using namespace System::IO;
-	public ref class Test
+	public ref class Test : TestBasic
 	{
-	private:
-		String^ TestName;
-		int Id;
-		array<Task^>^ TasksList;
+	protected:
 		int IdLastTask;
 		bool RandomOrder;
+		array<Task^>^ TasksList;
+
+		void ReadFromFile(BinaryReader^ Reader) override;
 	public:
 		Test();
 		Test(String^ TestName);
 		Test(BinaryReader^ Reader);
 
-		void SetTestName(String^ Name);
-		void SetId(int Id);
-		void AddNewTask(Task^ NewTask);
-		void SetRandomOrderFlag(bool IsRandomOrder);
-
-		String^ GetTestName();
-		int GetId();
 		Task^ GetTaskWithId(int Id);
 		array<Task^>^ GetTasksList();
+		
+		void SetTestName(String^ Name);
+		void SetId(int Id);
+		void SetRandomOrderFlag(bool IsRandomOrder);
 		bool IsTaskInRandomOrder();
 
+		void AddNewTask(Task^ NewTask);
 		bool RemoveTaskWithId(int Id);
 
-		void WriteInFile(BinaryWriter^ Writer);
-		void ReadFromFile(BinaryReader^ Reader);
+		void WriteInFile(BinaryWriter^ Writer) override;	
 	};
 }
