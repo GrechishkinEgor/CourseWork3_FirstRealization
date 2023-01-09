@@ -33,9 +33,11 @@ namespace CourseWork {
 	private: System::Windows::Forms::TextBox^ TestNameTextBox;
 	private: System::Windows::Forms::Panel^ InfoPanel;
 	private: System::Windows::Forms::DataGridView^ TasksGridView;
+
+
+	private: System::Windows::Forms::Label^ TotalMarkLabel;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Question;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Mark;
-	private: System::Windows::Forms::Label^ TotalMarkLabel;
 
 	private:
 		/// <summary>
@@ -53,10 +55,10 @@ namespace CourseWork {
 			this->NameTestLabel = (gcnew System::Windows::Forms::Label());
 			this->TestNameTextBox = (gcnew System::Windows::Forms::TextBox());
 			this->InfoPanel = (gcnew System::Windows::Forms::Panel());
+			this->TotalMarkLabel = (gcnew System::Windows::Forms::Label());
 			this->TasksGridView = (gcnew System::Windows::Forms::DataGridView());
 			this->Question = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Mark = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->TotalMarkLabel = (gcnew System::Windows::Forms::Label());
 			this->InfoPanel->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->TasksGridView))->BeginInit();
 			this->SuspendLayout();
@@ -92,6 +94,15 @@ namespace CourseWork {
 			this->InfoPanel->Size = System::Drawing::Size(554, 62);
 			this->InfoPanel->TabIndex = 2;
 			// 
+			// TotalMarkLabel
+			// 
+			this->TotalMarkLabel->AutoSize = true;
+			this->TotalMarkLabel->Location = System::Drawing::Point(12, 35);
+			this->TotalMarkLabel->Name = L"TotalMarkLabel";
+			this->TotalMarkLabel->Size = System::Drawing::Size(149, 13);
+			this->TotalMarkLabel->TabIndex = 2;
+			this->TotalMarkLabel->Text = L"Процент выполнения теста:";
+			// 
 			// TasksGridView
 			// 
 			this->TasksGridView->AllowUserToAddRows = false;
@@ -106,8 +117,10 @@ namespace CourseWork {
 			this->TasksGridView->Location = System::Drawing::Point(0, 62);
 			this->TasksGridView->Name = L"TasksGridView";
 			this->TasksGridView->ReadOnly = true;
+			this->TasksGridView->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->TasksGridView->Size = System::Drawing::Size(554, 239);
 			this->TasksGridView->TabIndex = 3;
+			this->TasksGridView->CellDoubleClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &TestResult::TasksGridView_CellDoubleClick);
 			// 
 			// Question
 			// 
@@ -115,6 +128,7 @@ namespace CourseWork {
 			this->Question->HeaderText = L"Вопрос";
 			this->Question->Name = L"Question";
 			this->Question->ReadOnly = true;
+			this->Question->SortMode = System::Windows::Forms::DataGridViewColumnSortMode::NotSortable;
 			// 
 			// Mark
 			// 
@@ -122,16 +136,8 @@ namespace CourseWork {
 			this->Mark->HeaderText = L"Оценка";
 			this->Mark->Name = L"Mark";
 			this->Mark->ReadOnly = true;
-			this->Mark->Width = 70;
-			// 
-			// TotalMarkLabel
-			// 
-			this->TotalMarkLabel->AutoSize = true;
-			this->TotalMarkLabel->Location = System::Drawing::Point(12, 35);
-			this->TotalMarkLabel->Name = L"TotalMarkLabel";
-			this->TotalMarkLabel->Size = System::Drawing::Size(149, 13);
-			this->TotalMarkLabel->TabIndex = 2;
-			this->TotalMarkLabel->Text = L"Процент выполнения теста:";
+			this->Mark->SortMode = System::Windows::Forms::DataGridViewColumnSortMode::NotSortable;
+			this->Mark->Width = 51;
 			// 
 			// TestResult
 			// 
@@ -151,5 +157,6 @@ namespace CourseWork {
 		}
 		ReadyTest^ CurrentTest;
 #pragma endregion
-	};
+	private: System::Void TasksGridView_CellDoubleClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
+};
 }

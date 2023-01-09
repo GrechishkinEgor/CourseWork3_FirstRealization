@@ -15,6 +15,7 @@
 #include "StudentTaskView.h"
 #include "StartTest.h"
 #include "TestResult.h"
+#include "TaskResult.h"
 
 /*Текущий контекст приложения (ApplicationContext).
 * Все имеющиеся в проекте формы подключаются в этот заголовочный файл.
