@@ -131,6 +131,7 @@
     <ClCompile Include="PasswordCheck.cpp" />
     <ClCompile Include="ReadyTask.cpp" />
     <ClCompile Include="ReadyTest.cpp" />
+    <ClCompile Include="StartTest.cpp" />
     <ClCompile Include="StudentCourseView.cpp" />
     <ClCompile Include="StudentMode.cpp" />
     <ClCompile Include="StudentTaskView.cpp" />
@@ -168,6 +169,9 @@
     </ClInclude>
     <ClInclude Include="ReadyTask.h" />
     <ClInclude Include="ReadyTest.h" />
+    <ClInclude Include="StartTest.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="StudentCourseView.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -212,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PasswordCheck.resx">
       <DependentUpon>PasswordCheck.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartTest.resx">
+      <DependentUpon>StartTest.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StudentCourseView.resx">
       <DependentUpon>StudentCourseView.h</DependentUpon>
