@@ -4,7 +4,7 @@
 * В конструктор формы передается ссылка на задание.
 * Если все поля формы заполнены верно и нажата кнопка ОК, в DialogResult выставляется OK
 */
-extern ref class CourseWork::Task;
+//extern ref class CourseWork::Task;
 namespace CourseWork {
 	using namespace System;
 	using namespace System::ComponentModel;

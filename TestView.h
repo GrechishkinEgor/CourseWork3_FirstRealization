@@ -4,7 +4,7 @@
 * ¬ конструктор передаетс€ ссылка на выбранный курс.
 * ≈сли тест удал€етс€, то в DialogResult выставл€етс€ Abort.
 */
-extern ref class CourseWork::Test;
+//extern ref class CourseWork::Test;
 namespace CourseWork {
 	using namespace System;
 	using namespace System::ComponentModel;

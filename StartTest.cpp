@@ -18,12 +18,12 @@ System::Void CourseWork::StartTest::StartButton_Click(System::Object^ sender, Sy
 			FileStream^ NewFile = gcnew FileStream(StudentNameTextBox->Text + ".test", FileMode::CreateNew);
 			NewFile->Close();
 		}
-		catch (IOException^ e)
+		catch (IOException^)
 		{
 			MessageBox::Show("Учащийся с данным именем уже прошел тест.", "Имя учащегося", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 			return System::Void();
 		}
-		catch (ArgumentException^ e)
+		catch (ArgumentException^)
 		{
 			MessageBox::Show("Имя учащегося содержит некорректные символы.", "Имя учащегося", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 			return System::Void();
