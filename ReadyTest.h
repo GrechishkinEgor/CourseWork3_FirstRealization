@@ -12,6 +12,7 @@ namespace CourseWork
 		void ReadFromFile(BinaryReader^ Reader) override;
 	public:
 		ReadyTest(Test^);
+		ReadyTest(BinaryReader^ Reader);
 
 		array<ReadyTask^>^ GetTasksList();
 		String^ GetStudentName();

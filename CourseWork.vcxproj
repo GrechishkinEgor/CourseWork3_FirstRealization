@@ -141,6 +141,7 @@
     <ClCompile Include="TeacherMode.cpp" />
     <ClCompile Include="Test.cpp" />
     <ClCompile Include="TestBasic.cpp" />
+    <ClCompile Include="TestResult.cpp" />
     <ClCompile Include="TestView.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -191,6 +192,9 @@
     </ClInclude>
     <ClInclude Include="Test.h" />
     <ClInclude Include="TestBasic.h" />
+    <ClInclude Include="TestResult.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="TestView.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -234,6 +238,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TeacherMode.resx">
       <DependentUpon>TeacherMode.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestResult.resx">
+      <DependentUpon>TestResult.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TestView.resx">
       <DependentUpon>TestView.h</DependentUpon>

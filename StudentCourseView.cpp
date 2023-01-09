@@ -46,3 +46,9 @@ System::Void CourseWork::StudentCourseView::TestsDataGridView_CellDoubleClick(Sy
 	}
 	return System::Void();
 }
+
+System::Void CourseWork::StudentCourseView::ExitCourseButton_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	CurrentApplicationContext::ShowOnlyStudentModeWin();
+	return System::Void();
+}

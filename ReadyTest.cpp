@@ -54,6 +54,10 @@ CourseWork::ReadyTest::ReadyTest(Test^ SomeTest)
     return;
 }
 
+CourseWork::ReadyTest::ReadyTest(BinaryReader^ Reader) : TestBasic(Reader)
+{
+}
+
 array<ReadyTask^>^ CourseWork::ReadyTest::GetTasksList()
 {
     return TasksList;

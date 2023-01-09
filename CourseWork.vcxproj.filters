@@ -84,6 +84,9 @@
     <ClInclude Include="StartTest.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="TestResult.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChoiceMode.cpp">
@@ -153,6 +156,9 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="StartTest.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="TestResult.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

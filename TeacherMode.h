@@ -43,6 +43,8 @@ namespace CourseWork {
 	private: System::Windows::Forms::Button^ ReturnToChoiceModeButton;
 	private: System::Windows::Forms::Label^ InfoLabel;
 	private: System::Windows::Forms::OpenFileDialog^ OpenCourseDialog;
+	private: System::Windows::Forms::Button^ CheckTestButton;
+	private: System::Windows::Forms::OpenFileDialog^ OpenTestDialog;
 	protected:
 
 	protected:
@@ -65,6 +67,8 @@ namespace CourseWork {
 			this->ReturnToChoiceModeButton = (gcnew System::Windows::Forms::Button());
 			this->InfoLabel = (gcnew System::Windows::Forms::Label());
 			this->OpenCourseDialog = (gcnew System::Windows::Forms::OpenFileDialog());
+			this->CheckTestButton = (gcnew System::Windows::Forms::Button());
+			this->OpenTestDialog = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->SuspendLayout();
 			// 
 			// CreatingNewCourseButton
@@ -95,10 +99,10 @@ namespace CourseWork {
 			// 
 			this->ReturnToChoiceModeButton->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->ReturnToChoiceModeButton->Location = System::Drawing::Point(37, 191);
+			this->ReturnToChoiceModeButton->Location = System::Drawing::Point(37, 234);
 			this->ReturnToChoiceModeButton->Name = L"ReturnToChoiceModeButton";
 			this->ReturnToChoiceModeButton->Size = System::Drawing::Size(213, 38);
-			this->ReturnToChoiceModeButton->TabIndex = 2;
+			this->ReturnToChoiceModeButton->TabIndex = 3;
 			this->ReturnToChoiceModeButton->Text = L"Вернуться";
 			this->ReturnToChoiceModeButton->UseVisualStyleBackColor = true;
 			this->ReturnToChoiceModeButton->Click += gcnew System::EventHandler(this, &TeacherMode::ReturnToChoiceModeButton_Click);
@@ -118,11 +122,28 @@ namespace CourseWork {
 			// 
 			this->OpenCourseDialog->Filter = L"Курсы|*.course";
 			// 
+			// CheckTestButton
+			// 
+			this->CheckTestButton->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->CheckTestButton->Location = System::Drawing::Point(37, 190);
+			this->CheckTestButton->Name = L"CheckTestButton";
+			this->CheckTestButton->Size = System::Drawing::Size(213, 38);
+			this->CheckTestButton->TabIndex = 2;
+			this->CheckTestButton->Text = L"Посмотреть результаты теста";
+			this->CheckTestButton->UseVisualStyleBackColor = true;
+			this->CheckTestButton->Click += gcnew System::EventHandler(this, &TeacherMode::CheckTestButton_Click);
+			// 
+			// OpenTestDialog
+			// 
+			this->OpenTestDialog->Filter = L"Тесты|*.test";
+			// 
 			// TeacherMode
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(284, 261);
+			this->ClientSize = System::Drawing::Size(284, 307);
+			this->Controls->Add(this->CheckTestButton);
 			this->Controls->Add(this->InfoLabel);
 			this->Controls->Add(this->ReturnToChoiceModeButton);
 			this->Controls->Add(this->OpenCourseButton);
@@ -141,5 +162,6 @@ namespace CourseWork {
 private: System::Void CreatingNewCourseButton_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void TeacherMode_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
 private: System::Void OpenCourseButton_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void CheckTestButton_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

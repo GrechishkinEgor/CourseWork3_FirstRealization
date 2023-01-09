@@ -31,3 +31,17 @@ System::Void CourseWork::TeacherMode::OpenCourseButton_Click(System::Object^ sen
 	}
 	return System::Void();
 }
+
+System::Void CourseWork::TeacherMode::CheckTestButton_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	if (OpenTestDialog->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+	{
+		FileStream^ TestFile = gcnew FileStream(OpenTestDialog->FileName, FileMode::Open);
+		BinaryReader^ TestReader = gcnew BinaryReader(TestFile);
+		ReadyTest^ CurrentTest = gcnew ReadyTest(TestReader);
+		TestResult^ TestResultWin = gcnew TestResult(CurrentTest);
+		TestResultWin->ShowDialog();
+		TestFile->Close();
+	}
+	return System::Void();
+}

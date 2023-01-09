@@ -3,6 +3,7 @@
 void CourseWork::ReadyTask::ReadFromFile(BinaryReader^ Reader)
 {
     TaskBasic::ReadFromFile(Reader);
+    UserAnswer = gcnew array<bool>(Answers->Length);
     for (int i = 0; i < Answers->Length; i++)
         UserAnswer[i] = Reader->ReadBoolean();
     LastUserMark = Reader->ReadInt32();
