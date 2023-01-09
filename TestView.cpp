@@ -29,7 +29,7 @@ System::Void CourseWork::TestView::TestNameTextBox_Leave(System::Object^ sender,
 
 System::Void CourseWork::TestView::удалитьToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	if (System::Windows::Forms::MessageBox::Show("Вы уверены, что хотите безвозвратно удалить тест?", "Удаление теста", System::Windows::Forms::MessageBoxButtons::OKCancel, System::Windows::Forms::MessageBoxIcon::Question)
+	if (System::Windows::Forms::MessageBox::Show("Вы уверены, что хотите безвозвратно удалить тест?", "Удаление теста", System::Windows::Forms::MessageBoxButtons::OKCancel, System::Windows::Forms::MessageBoxIcon::Exclamation)
 		== System::Windows::Forms::DialogResult::OK)
 	{
 		this->DialogResult = System::Windows::Forms::DialogResult::Abort;
