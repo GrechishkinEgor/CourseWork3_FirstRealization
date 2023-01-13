@@ -84,11 +84,14 @@ namespace CourseWork {
 			// 
 			// QuestionTextBox
 			// 
+			this->QuestionTextBox->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->QuestionTextBox->Enabled = false;
 			this->QuestionTextBox->Location = System::Drawing::Point(12, 12);
 			this->QuestionTextBox->Multiline = true;
 			this->QuestionTextBox->Name = L"QuestionTextBox";
 			this->QuestionTextBox->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
-			this->QuestionTextBox->Size = System::Drawing::Size(421, 63);
+			this->QuestionTextBox->Size = System::Drawing::Size(431, 63);
 			this->QuestionTextBox->TabIndex = 0;
 			// 
 			// AnswersGridView
@@ -105,6 +108,7 @@ namespace CourseWork {
 			this->AnswersGridView->Location = System::Drawing::Point(0, 103);
 			this->AnswersGridView->Name = L"AnswersGridView";
 			this->AnswersGridView->ReadOnly = true;
+			this->AnswersGridView->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->AnswersGridView->Size = System::Drawing::Size(455, 216);
 			this->AnswersGridView->TabIndex = 1;
 			// 

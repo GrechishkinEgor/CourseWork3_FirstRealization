@@ -34,7 +34,8 @@ namespace CourseWork {
 	private: System::Windows::Forms::Label^ NameTestLabel;
 	protected:
 	private: System::Windows::Forms::TextBox^ TestNameTextBox;
-	private: System::Windows::Forms::Label^ StudentName;
+	private: System::Windows::Forms::Label^ StudentNameLabel;
+
 	private: System::Windows::Forms::TextBox^ StudentNameTextBox;
 	private: System::Windows::Forms::Button^ StartButton;
 
@@ -53,7 +54,7 @@ namespace CourseWork {
 		{
 			this->NameTestLabel = (gcnew System::Windows::Forms::Label());
 			this->TestNameTextBox = (gcnew System::Windows::Forms::TextBox());
-			this->StudentName = (gcnew System::Windows::Forms::Label());
+			this->StudentNameLabel = (gcnew System::Windows::Forms::Label());
 			this->StudentNameTextBox = (gcnew System::Windows::Forms::TextBox());
 			this->StartButton = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
@@ -75,14 +76,14 @@ namespace CourseWork {
 			this->TestNameTextBox->Size = System::Drawing::Size(265, 20);
 			this->TestNameTextBox->TabIndex = 1;
 			// 
-			// StudentName
+			// StudentNameLabel
 			// 
-			this->StudentName->AutoSize = true;
-			this->StudentName->Location = System::Drawing::Point(14, 35);
-			this->StudentName->Name = L"StudentName";
-			this->StudentName->Size = System::Drawing::Size(89, 13);
-			this->StudentName->TabIndex = 2;
-			this->StudentName->Text = L"Имя учащегося:";
+			this->StudentNameLabel->AutoSize = true;
+			this->StudentNameLabel->Location = System::Drawing::Point(14, 35);
+			this->StudentNameLabel->Name = L"StudentNameLabel";
+			this->StudentNameLabel->Size = System::Drawing::Size(89, 13);
+			this->StudentNameLabel->TabIndex = 2;
+			this->StudentNameLabel->Text = L"Имя учащегося:";
 			// 
 			// StudentNameTextBox
 			// 
@@ -108,7 +109,7 @@ namespace CourseWork {
 			this->ClientSize = System::Drawing::Size(386, 128);
 			this->Controls->Add(this->StartButton);
 			this->Controls->Add(this->StudentNameTextBox);
-			this->Controls->Add(this->StudentName);
+			this->Controls->Add(this->StudentNameLabel);
 			this->Controls->Add(this->TestNameTextBox);
 			this->Controls->Add(this->NameTestLabel);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedToolWindow;

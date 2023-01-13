@@ -97,6 +97,7 @@ namespace CourseWork {
 			// OldPasswordTextBox
 			// 
 			this->OldPasswordTextBox->Location = System::Drawing::Point(134, 12);
+			this->OldPasswordTextBox->MaxLength = 64;
 			this->OldPasswordTextBox->Name = L"OldPasswordTextBox";
 			this->OldPasswordTextBox->Size = System::Drawing::Size(293, 20);
 			this->OldPasswordTextBox->TabIndex = 3;
@@ -104,6 +105,7 @@ namespace CourseWork {
 			// NewPasswordTextBox
 			// 
 			this->NewPasswordTextBox->Location = System::Drawing::Point(134, 38);
+			this->NewPasswordTextBox->MaxLength = 64;
 			this->NewPasswordTextBox->Name = L"NewPasswordTextBox";
 			this->NewPasswordTextBox->Size = System::Drawing::Size(293, 20);
 			this->NewPasswordTextBox->TabIndex = 4;
@@ -111,6 +113,7 @@ namespace CourseWork {
 			// RepeatPasswordTextBox
 			// 
 			this->RepeatPasswordTextBox->Location = System::Drawing::Point(134, 68);
+			this->RepeatPasswordTextBox->MaxLength = 64;
 			this->RepeatPasswordTextBox->Name = L"RepeatPasswordTextBox";
 			this->RepeatPasswordTextBox->Size = System::Drawing::Size(293, 20);
 			this->RepeatPasswordTextBox->TabIndex = 5;

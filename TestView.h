@@ -102,7 +102,10 @@ namespace CourseWork {
 			// 
 			// TestNameTextBox
 			// 
+			this->TestNameTextBox->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
 			this->TestNameTextBox->Location = System::Drawing::Point(52, 9);
+			this->TestNameTextBox->MaxLength = 256;
 			this->TestNameTextBox->Name = L"TestNameTextBox";
 			this->TestNameTextBox->Size = System::Drawing::Size(435, 20);
 			this->TestNameTextBox->TabIndex = 1;

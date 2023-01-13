@@ -43,7 +43,8 @@ namespace CourseWork {
 	private: System::Windows::Forms::DataGridView^ AnswersGridView;
 
 	private: System::Windows::Forms::TextBox^ TotalMarkTextBox;
-	private: System::Windows::Forms::Label^ TotalMark;
+	private: System::Windows::Forms::Label^ TotalMarkLabel;
+
 
 
 	private: System::Windows::Forms::TextBox^ ExecutionTimeTextBox;
@@ -67,17 +68,17 @@ namespace CourseWork {
 		void InitializeComponent(void)
 		{
 			this->QuestionPanel = (gcnew System::Windows::Forms::Panel());
+			this->OneAnswerCheckBox = (gcnew System::Windows::Forms::CheckBox());
 			this->ExecutionTimeTextBox = (gcnew System::Windows::Forms::TextBox());
 			this->ExecutionTimeLabel = (gcnew System::Windows::Forms::Label());
 			this->TotalMarkTextBox = (gcnew System::Windows::Forms::TextBox());
-			this->TotalMark = (gcnew System::Windows::Forms::Label());
+			this->TotalMarkLabel = (gcnew System::Windows::Forms::Label());
 			this->RandomOrderOfAnswersCheckBox = (gcnew System::Windows::Forms::CheckBox());
 			this->QuestionTextBox = (gcnew System::Windows::Forms::TextBox());
 			this->OKButton = (gcnew System::Windows::Forms::Button());
 			this->AnswersGridView = (gcnew System::Windows::Forms::DataGridView());
 			this->Answer = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->IsRight = (gcnew System::Windows::Forms::DataGridViewButtonColumn());
-			this->OneAnswerCheckBox = (gcnew System::Windows::Forms::CheckBox());
 			this->QuestionPanel->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->AnswersGridView))->BeginInit();
 			this->SuspendLayout();
@@ -89,7 +90,7 @@ namespace CourseWork {
 			this->QuestionPanel->Controls->Add(this->ExecutionTimeTextBox);
 			this->QuestionPanel->Controls->Add(this->ExecutionTimeLabel);
 			this->QuestionPanel->Controls->Add(this->TotalMarkTextBox);
-			this->QuestionPanel->Controls->Add(this->TotalMark);
+			this->QuestionPanel->Controls->Add(this->TotalMarkLabel);
 			this->QuestionPanel->Controls->Add(this->RandomOrderOfAnswersCheckBox);
 			this->QuestionPanel->Controls->Add(this->QuestionTextBox);
 			this->QuestionPanel->Dock = System::Windows::Forms::DockStyle::Top;
@@ -97,6 +98,17 @@ namespace CourseWork {
 			this->QuestionPanel->Name = L"QuestionPanel";
 			this->QuestionPanel->Size = System::Drawing::Size(484, 145);
 			this->QuestionPanel->TabIndex = 0;
+			// 
+			// OneAnswerCheckBox
+			// 
+			this->OneAnswerCheckBox->AutoSize = true;
+			this->OneAnswerCheckBox->Location = System::Drawing::Point(12, 92);
+			this->OneAnswerCheckBox->Name = L"OneAnswerCheckBox";
+			this->OneAnswerCheckBox->Size = System::Drawing::Size(201, 17);
+			this->OneAnswerCheckBox->TabIndex = 7;
+			this->OneAnswerCheckBox->Text = L"Задание с одним верным ответом";
+			this->OneAnswerCheckBox->UseVisualStyleBackColor = true;
+			this->OneAnswerCheckBox->CheckStateChanged += gcnew System::EventHandler(this, &EditChoiceFewAnswer::OneAnswerCheckBox_CheckStateChanged);
 			// 
 			// ExecutionTimeTextBox
 			// 
@@ -129,15 +141,15 @@ namespace CourseWork {
 			this->TotalMarkTextBox->Size = System::Drawing::Size(69, 20);
 			this->TotalMarkTextBox->TabIndex = 4;
 			// 
-			// TotalMark
+			// TotalMarkLabel
 			// 
-			this->TotalMark->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
-			this->TotalMark->AutoSize = true;
-			this->TotalMark->Location = System::Drawing::Point(260, 72);
-			this->TotalMark->Name = L"TotalMark";
-			this->TotalMark->Size = System::Drawing::Size(137, 13);
-			this->TotalMark->TabIndex = 3;
-			this->TotalMark->Text = L"Полный балл за задание:";
+			this->TotalMarkLabel->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
+			this->TotalMarkLabel->AutoSize = true;
+			this->TotalMarkLabel->Location = System::Drawing::Point(260, 72);
+			this->TotalMarkLabel->Name = L"TotalMarkLabel";
+			this->TotalMarkLabel->Size = System::Drawing::Size(137, 13);
+			this->TotalMarkLabel->TabIndex = 3;
+			this->TotalMarkLabel->Text = L"Полный балл за задание:";
 			// 
 			// RandomOrderOfAnswersCheckBox
 			// 
@@ -208,17 +220,6 @@ namespace CourseWork {
 			this->IsRight->Text = L"Неправильный";
 			this->IsRight->Width = 86;
 			// 
-			// OneAnswerCheckBox
-			// 
-			this->OneAnswerCheckBox->AutoSize = true;
-			this->OneAnswerCheckBox->Location = System::Drawing::Point(12, 92);
-			this->OneAnswerCheckBox->Name = L"OneAnswerCheckBox";
-			this->OneAnswerCheckBox->Size = System::Drawing::Size(201, 17);
-			this->OneAnswerCheckBox->TabIndex = 7;
-			this->OneAnswerCheckBox->Text = L"Задание с одним верным ответом";
-			this->OneAnswerCheckBox->UseVisualStyleBackColor = true;
-			this->OneAnswerCheckBox->CheckStateChanged += gcnew System::EventHandler(this, &EditChoiceFewAnswer::OneAnswerCheckBox_CheckStateChanged);
-			// 
 			// EditChoiceFewAnswer
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -230,7 +231,7 @@ namespace CourseWork {
 			this->MinimumSize = System::Drawing::Size(500, 400);
 			this->Name = L"EditChoiceFewAnswer";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"Выбор нескольких ответов";
+			this->Text = L"Вопрос";
 			this->QuestionPanel->ResumeLayout(false);
 			this->QuestionPanel->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->AnswersGridView))->EndInit();
